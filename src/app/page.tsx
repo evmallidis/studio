@@ -4,6 +4,7 @@ import Services from '@/components/Services';
 import RoiCalculator from '@/components/RoiCalculator';
 import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/Footer';
+import QuoteForm from '@/components/QuoteForm';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <Services />
         <RoiCalculator />
         <Testimonials />
+        <QuoteForm />
       </main>
       <Footer />
     </div>
