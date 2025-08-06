@@ -1,7 +1,17 @@
+
+'use client';
+
 import { ParkingCircle, Mail, Phone } from 'lucide-react';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function Footer() {
+  const [year, setYear] = useState(new Date().getFullYear());
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer id="contact" className="bg-primary text-primary-foreground">
       <div className="container py-12">
@@ -41,7 +51,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-primary-foreground/20 mt-8 pt-6 text-center text-sm text-primary-foreground/60">
-          <p>&copy; {new Date().getFullYear()} ParkProfit. All rights reserved.</p>
+          <p>&copy; {year} ParkProfit. All rights reserved.</p>
         </div>
       </div>
     </footer>
