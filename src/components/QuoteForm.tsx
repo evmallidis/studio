@@ -16,7 +16,7 @@ import { Loader2, Send } from 'lucide-react';
 const formSchema = z.object({
   municipality: z.string().min(1, 'Municipality is required.'),
   propertyType: z.string().min(1, 'Please select a property type.'),
-  totalArea: z.string().min(1, 'Total area is required.'),
+  totalArea: z.coerce.number().min(1, 'Total area is required.'),
   area: z.string().min(1, 'Area is required.'),
   collaborationType: z.string().min(1, 'Please select a collaboration type.'),
   email: z.string().email('Invalid email address.'),
@@ -34,7 +34,6 @@ export default function QuoteForm() {
     defaultValues: {
       municipality: '',
       propertyType: '',
-      totalArea: '',
       area: '',
       collaborationType: '',
       email: '',
@@ -144,7 +143,7 @@ export default function QuoteForm() {
                       render={({ field }) => (
                         <FormItem>
                           <FormLabel>Total Area (sq. m.)</FormLabel>
-                          <FormControl><Input type="text" placeholder="e.g., 2000" {...field} /></FormControl>
+                          <FormControl><Input type="number" placeholder="e.g., 2000" {...field} /></FormControl>
                           <FormMessage />
                         </FormItem>
                       )}

@@ -1,37 +1,58 @@
+"use client";
+
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/autoplay';
 
 export default function Hero() {
+  const images = [
+    "/images/OK421.jpg", // Replace with your image source
+    // "https://placehold.co/1920x1080/blue", // Replace with your image source
+    // "https://placehold.co/1920x1080/red", // Replace with your image source
+  ];
+
   return (
-    <section className="relative bg-white">
-      <div className="container grid lg:grid-cols-2 gap-12 items-center py-12 md:py-24">
-        <div className="flex flex-col items-start gap-6 text-left">
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl font-headline text-primary">
-            Turn Your Unused Space into Profit
-          </h1>
-          <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
-            We rent your space and transform it into a profitable car parking business. Parking Management is your expert partner for creating comfortable and lucrative parking facilities.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" asChild className="bg-accent hover:bg-accent/90 text-accent-foreground">
-              <Link href="#roi-calculator">Estimate Your ROI</Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild>
-              <Link href="#services">Our Solutions</Link>
-            </Button>
-          </div>
-        </div>
-        <div className="relative rounded-xl overflow-hidden shadow-2xl">
-          <Image
-            src="https://placehold.co/600x400.png"
-            alt="Modern parking garage"
-            width={600}
-            height={400}
-            className="w-full h-auto object-cover"
-            data-ai-hint="parking garage"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+    <section className="relative h-[80vh] w-full overflow-hidden">
+      <div className="absolute inset-0 -z-10 w-full h-full">
+        <Swiper
+          modules={[Autoplay, EffectFade]}
+          spaceBetween={0}
+          slidesPerView={1}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          effect="fade"
+          fadeEffect={{
+            crossFade: true,
+          }}
+          loop={true}
+          className="w-full h-full"
+        >
+          {images.map((image, index) => (
+            <SwiperSlide key={index} className="w-full h-full relative"><Image src={image} alt={`Hero Background ${index + 1}`} layout="fill" objectFit="cover" /></SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+      <div className="container mx-auto flex h-full flex-col items-center justify-center px-4 text-center text-white relative z-10">
+        <h1 className="text-5xl font-bold md:text-6xl drop-shadow-lg">
+          Turn Your Unused Space into Profit
+        </h1>
+        <p className="mt-4 text-xl md:text-2xl max-w-2xl drop-shadow-lg">
+          We rent your space and transform it into a profitable car parking business. Parking Management is your expert partner for creating comfortable and lucrative parking facilities.
+        </p>
+        <div className="mt-8">
+          {/* Play button - add your video player logic here */}
+          <Button
+            size="lg"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-8 py-4"
+          >
+            Play Video
+          </Button>
         </div>
       </div>
     </section>

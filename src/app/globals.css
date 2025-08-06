@@ -81,4 +81,17 @@
   body {
     @apply bg-background text-foreground;
   }
+  body {
+    display: flex;
+    justify-content: center;
+    margin: 1rem; /* Default margin for small screens */
+  }
 }
+
+@media (min-width: 768px) { /* Adjust margin for medium screens */
+  body {
+    margin: 2rem;
+  }
+}
+
+/* You can add more media queries for larger screens if needed */
