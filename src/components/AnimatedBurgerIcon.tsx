@@ -2,7 +2,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { gsap } from '@/lib/gsap';
+import { gsap } from "gsap";
 
 export default function AnimatedBurgerIcon() {
   const svgRef = useRef<SVGSVGElement>(null);
@@ -12,6 +12,7 @@ export default function AnimatedBurgerIcon() {
 
   useEffect(() => {
     if (topBarRef.current && middleBarRef.current && bottomBarRef.current) {
+      console.log("dfwdfwef")
       gsap.set([topBarRef.current, middleBarRef.current, bottomBarRef.current], {
         transformOrigin: '50% 50%',
       });
@@ -34,8 +35,8 @@ export default function AnimatedBurgerIcon() {
   return (
     <svg
       ref={svgRef}
-      width="24"
-      height="24"
+      width="48"
+      height="48"
       viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

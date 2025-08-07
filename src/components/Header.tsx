@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { X, ParkingCircle } from 'lucide-react';
 import Link from 'next/link';
-import { gsap } from '@/lib/gsap';
+import { gsap } from "@/lib/gsap";
 import AnimatedBurgerIcon from './AnimatedBurgerIcon';
 
 export default function Header() {
@@ -14,20 +14,25 @@ export default function Header() {
   const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isOpen && navRef.current) {
-      const links = Array.from(navRef.current.children);
-      gsap.fromTo(
-        links,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: 'power3.out',
-          delay: 0.2, 
+    if (isOpen) {
+      // We need a short timeout to allow the SheetContent to render and the ref to be attached.
+      setTimeout(() => {
+        if (navRef.current) {
+          const links = Array.from(navRef.current.children);
+          gsap.fromTo(
+            links,
+            { opacity: 0, y: 20 },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              stagger: 0.1,
+              ease: 'power3.out',
+              delay: 0.2, 
+            }
+          );
         }
-      );
+      }, 50);
     }
   }, [isOpen]);
 
@@ -47,7 +52,7 @@ export default function Header() {
           <div>
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="lg">
                   <AnimatedBurgerIcon />
                   <span className="sr-only">Άνοιγμα μενού</span>
                 </Button>
