@@ -16,7 +16,7 @@ export default function Header() {
   useEffect(() => {
     if (isOpen) {
       gsap.fromTo(
-        navLinksRef.current?.children!,
+        navLinks.current,
         { opacity: 0, y: 20 },
         {
           opacity: 1,
@@ -24,11 +24,17 @@ export default function Header() {
           duration: 0.5,
           stagger: 0.1,
           ease: 'power3.out',
-          delay: 0.2, // Delay to allow sheet to slide in
+          delay: 0.2, 
         }
       );
     }
   }, [isOpen]);
+
+  const navLinks = useRef<HTMLAnchorElement[]>([]);
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -63,27 +69,19 @@ export default function Header() {
                   </SheetClose>
                 </SheetHeader>
                 <div className="flex flex-col h-full">
-                  <nav ref={navLinksRef} className="flex flex-col items-center justify-center flex-1 gap-8">
-                     <SheetClose asChild>
-                        <Link href="#contact" className="text-2xl font-semibold hover:text-primary transition-colors">
-                            Contact Us
-                        </Link>
-                     </SheetClose>
-                     <SheetClose asChild>
-                        <Link href="#services" className="text-2xl font-semibold hover:text-primary transition-colors">
-                            Services
-                        </Link>
-                     </SheetClose>
-                     <SheetClose asChild>
-                        <Link href="#roi-calculator" className="text-2xl font-semibold hover:text-primary transition-colors">
-                            ROI Calculator
-                        </Link>
-                     </SheetClose>
-                      <SheetClose asChild>
-                        <Link href="#testimonials" className="text-2xl font-semibold hover:text-primary transition-colors">
-                            Testimonials
-                        </Link>
-                     </SheetClose>
+                  <nav className="flex flex-col items-center justify-center flex-1 gap-8">
+                     <Link ref={(el) => el && (navLinks.current[0] = el)} href="#contact" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                         Contact Us
+                     </Link>
+                     <Link ref={(el) => el && (navLinks.current[1] = el)} href="#services" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                         Services
+                     </Link>
+                     <Link ref={(el) => el && (navLinks.current[2] = el)} href="#roi-calculator" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                         ROI Calculator
+                     </Link>
+                      <Link ref={(el) => el && (navLinks.current[3] = el)} href="#testimonials" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                          Testimonials
+                      </Link>
                   </nav>
                 </div>
               </SheetContent>
