@@ -66,7 +66,7 @@ export default function RoiCalculator() {
             <p className="max-w-2xl mt-4 text-muted-foreground md:text-lg">
               Χρησιμοποιήστε το εργαλείο μας με τεχνητή νοημοσύνη για να λάβετε μια άμεση εκτίμηση των πιθανών εσόδων σας από τη στάθμευση. Απλώς συμπληρώστε τις λεπτομέρειες για τον χώρο σας.
             </p>
-            <Card className="mt-8 shadow-lg">
+            <Card className="mt-8 shadow-lg rounded-lg">
               <CardContent className="p-8">
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -155,7 +155,7 @@ export default function RoiCalculator() {
             </Card>
           </div>
           <div className="sticky top-24">
-            <Card className="shadow-2xl">
+            <Card className="shadow-2xl rounded-lg">
               <CardHeader className="p-8">
                 <CardTitle className="font-headline flex items-center gap-2 text-2xl">
                   <TrendingUp className="text-primary h-8 w-8" /> Η Απόδοση της Επένδυσής σας (ROI)
