@@ -1,14 +1,34 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { Menu, X, ParkingCircle } from 'lucide-react';
 import Link from 'next/link';
+import { gsap } from 'gsap';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const navLinksRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      gsap.fromTo(
+        navLinksRef.current?.children!,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: 'power3.out',
+          delay: 0.2, // Delay to allow sheet to slide in
+        }
+      );
+    }
+  }, [isOpen]);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -27,7 +47,7 @@ export default function Header() {
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <SheetContent ref={menuRef} side="right" className="w-[300px] sm:w-[400px]">
                 <div className="flex flex-col h-full">
                   <div className="flex justify-between items-center p-4 border-b">
                      <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
@@ -41,7 +61,7 @@ export default function Header() {
                       </Button>
                     </SheetClose>
                   </div>
-                  <nav className="flex flex-col items-center justify-center flex-1 gap-8">
+                  <nav ref={navLinksRef} className="flex flex-col items-center justify-center flex-1 gap-8">
                      <SheetClose asChild>
                         <Link href="#contact" className="text-2xl font-semibold hover:text-primary transition-colors">
                             Contact Us
