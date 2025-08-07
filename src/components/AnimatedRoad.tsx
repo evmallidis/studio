@@ -60,12 +60,7 @@ export default function AnimatedRoad() {
     });
 
     tl.fromTo(
-      path,
-      { drawSVG: '0%' },
-      { drawSVG: '100%', duration: 1, ease: 'none' },
-      0
-    ).fromTo(
-      lines,
+      [path, lines],
       { drawSVG: '0%' },
       { drawSVG: '100%', duration: 1, ease: 'none' },
       0
