@@ -18,15 +18,8 @@ export default function Header() {
           <span className="font-bold text-lg font-headline">ParkProfit</span>
         </Link>
         <div className="flex flex-1 items-center justify-end">
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-2">
-            <Button asChild>
-              <Link href="#contact">Contact Us</Link>
-            </Button>
-          </nav>
-          
-          {/* Mobile Navigation */}
-          <div className="md:hidden">
+          {/* Unified Navigation */}
+          <div>
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
