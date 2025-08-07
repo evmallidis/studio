@@ -14,7 +14,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer id="contact" className="text-primary-foreground">
+    <footer id="contact" className="bg-secondary text-foreground">
       <div className="container py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
           <div className="flex flex-col items-center md:items-start">
