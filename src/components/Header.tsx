@@ -4,7 +4,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
-import { X, ParkingCircle } from 'lucide-react';
+import { X } from 'lucide-react';
 import Link from 'next/link';
 import { gsap } from '@/lib/gsap';
 import AnimatedBurgerIcon from './AnimatedBurgerIcon';
@@ -58,11 +58,17 @@ export default function Header() {
               <span className="sr-only">Άνοιγμα μενού</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px] p-0">
-            <SheetHeader className="p-4 border-b">
+          <SheetContent side="right" className="w-[300px] sm:w-[400px] p-0" hideCloseButton>
+            <SheetHeader className="p-4 border-b flex flex-row items-center justify-between">
                 <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
                   <Image src={"/images/logo.png"} width={40} height={40} alt="ParkProfit Logo"/>
                 </Link>
+                <SheetClose asChild>
+                    <Button variant="ghost" size="icon">
+                      <X className="h-6 w-6" />
+                      <span className="sr-only">Κλείσιμο</span>
+                    </Button>
+                </SheetClose>
             </SheetHeader>
             <div className="flex flex-col h-full">
               <nav ref={navRef} className="flex flex-col items-center justify-center flex-1 gap-8">
