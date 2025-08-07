@@ -15,9 +15,9 @@ export default function Home() {
       <main className="flex min-h-screen flex-col items-center justify-between">
         <Hero />
         <Services />
-        <Stats />
         <RoiCalculator />
         <Testimonials />
+        <Stats />
         <QuoteForm />
       </main>
       <Footer />

@@ -64,7 +64,7 @@ export default function Stats() {
   }, []);
 
   return (
-    <section ref={statsRef} id="stats" className="py-20 md:py-32 bg-secondary">
+    <section ref={statsRef} id="stats" className="py-16 md:py-24 bg-secondary">
       <div className="container">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 md:gap-8 text-center">
           {stats.map((stat) => (

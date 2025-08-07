@@ -58,7 +58,7 @@ export default function RoiCalculator() {
   }
 
   return (
-    <section id="roi-calculator" className="py-16 md:py-24 bg-white">
+    <section id="roi-calculator" className="p-16 md:p-24 bg-white shadow-lg rounded-lg">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div>

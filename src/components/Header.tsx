@@ -4,9 +4,10 @@
 import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
-import { Menu, X, ParkingCircle } from 'lucide-react';
+import { X, ParkingCircle } from 'lucide-react';
 import Link from 'next/link';
 import { gsap } from 'gsap';
+import AnimatedBurgerIcon from './AnimatedBurgerIcon';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ export default function Header() {
 
   useEffect(() => {
     if (isOpen && navRef.current) {
-      const links = navRef.current.children;
+      const links = Array.from(navRef.current.children);
       gsap.fromTo(
         links,
         { opacity: 0, y: 20 },
@@ -47,7 +48,7 @@ export default function Header() {
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
-                  <Menu className="h-6 w-6" />
+                  <AnimatedBurgerIcon />
                   <span className="sr-only">Άνοιγμα μενού</span>
                 </Button>
               </SheetTrigger>
