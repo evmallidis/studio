@@ -1,7 +1,7 @@
 
 'use client';
 
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Image from "next/image"
@@ -17,12 +17,16 @@ export default function Footer() {
     <footer id="contact" className="bg-secondary text-foreground">
       <div className="container py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-          <div className="flex flex-col items-center">
+          
+          <div className="flex flex-col items-center space-y-4">
             <Link href="/" className="flex items-center gap-2 mb-4">
-               <Image src={"/images/logo.png"} width={40} height={40} alt="ParkProfit Logo"/>
+               <Image src={"/images/logo.png"} width={60} height={60} alt="ParkProfit Logo"/>
             </Link>
             <p className="text-muted-foreground max-w-xs leading-relaxed">
-              Ο αξιόπιστος συνεργάτης σας στη διαχείριση και κερδοφορία χώρων στάθμευσης.
+              Αν θέλετε να ξεχωρίζει η επιχείρησή σας, επιλέξτε την παροχή επιπλέον υπηρεσιών στους επισκέπτες σας με λίγες απλές κινήσεις... Ρωτήστε μας.
+            </p>
+             <p className="text-muted-foreground font-semibold max-w-xs leading-relaxed">
+              Αποκλειστική συνεργασία με το Cloud parking management.
             </p>
           </div>
           
@@ -38,15 +42,27 @@ export default function Footer() {
 
           <div className="flex flex-col items-center">
             <h3 className="text-lg font-semibold mb-4 font-headline uppercase tracking-wider text-foreground">Επικοινωνία</h3>
-            <div className="space-y-4">
-              <a href="mailto:contact@parkprofit.com" className="flex items-center justify-center gap-3 hover:underline text-muted-foreground">
-                <Mail className="h-5 w-5" />
-                <span>contact@parkprofit.com</span>
-              </a>
-              <a href="tel:+302101234567" className="flex items-center justify-center gap-3 hover:underline text-muted-foreground">
+            <div className="space-y-4 text-muted-foreground">
+               <div className="flex items-center justify-center gap-3">
+                <MapPin className="h-5 w-5" />
+                <span>Καλλιρόης 89, ΤΚ 11745 ΑΘΗΝΑ</span>
+              </div>
+              <a href="tel:+302103210026" className="flex items-center justify-center gap-3 hover:underline">
                 <Phone className="h-5 w-5" />
-                <span>+30 210 123 4567</span>
+                <span>Κεντρικά: 210 32 100 26</span>
               </a>
+               <a href="tel:+306972117800" className="flex items-center justify-center gap-3 hover:underline">
+                <Phone className="h-5 w-5" />
+                <span>Κινητό: 6972 117 800</span>
+              </a>
+              <a href="mailto:info@parkingmanagement.gr" className="flex items-center justify-center gap-3 hover:underline">
+                <Mail className="h-5 w-5" />
+                <span>info@parkingmanagement.gr</span>
+              </a>
+               <div className="flex items-center justify-center gap-3">
+                <Clock className="h-5 w-5" />
+                <span>09:00 - 21:00</span>
+              </div>
             </div>
           </div>
         </div>
