@@ -57,7 +57,7 @@ export default function QuoteForm() {
   }
 
   return (
-    <section id="quote-form" className="py-16 md:py-24 bg-white">
+    <section id="quote-form" className="py-16 md:py-24">
       <div className="container">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-12">

@@ -19,7 +19,7 @@ export default function Footer() {
           
           <div className="items-center space-y-4 flex md:items-start md:flex-column flex-col justify-center">
             <Link href="/" className="flex items-center gap-2 mb-4">
-               <Image src={"/images/logo.png"} width={60} height={60} alt="ParkProfit Logo"/>
+               <Image src={"/images/logo.png"} width={100} height={100} alt="ParkProfit Logo"/>
             </Link>
             <p className="text-muted-foreground max-w-xs leading-relaxed">
               Αν θέλετε να ξεχωρίζει η επιχείρησή σας, επιλέξτε την παροχή επιπλέον υπηρεσιών στους επισκέπτες σας με λίγες απλές κινήσεις... Ρωτήστε μας.
