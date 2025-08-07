@@ -16,9 +16,9 @@ export default function Footer() {
   return (
     <footer id="contact" className="bg-secondary text-foreground">
       <div className="container py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+        <div className="flex flex-col md:flex-row justify-center items-start text-center gap-12">
           
-          <div className="flex flex-col items-center space-y-4">
+          <div className="flex flex-col items-center space-y-4 w-full md:w-1/3">
             <Link href="/" className="flex items-center gap-2 mb-4">
                <Image src={"/images/logo.png"} width={60} height={60} alt="ParkProfit Logo"/>
             </Link>
@@ -30,7 +30,7 @@ export default function Footer() {
             </p>
           </div>
           
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center w-full md:w-1/3">
             <h3 className="text-lg font-semibold mb-4 font-headline uppercase tracking-wider text-foreground">Υπηρεσίες</h3>
             <ul className="space-y-3">
               <li><Link href="#services" className="hover:underline text-muted-foreground">Υπαίθριοι Χώροι</Link></li>
@@ -40,7 +40,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center w-full md:w-1/3">
             <h3 className="text-lg font-semibold mb-4 font-headline uppercase tracking-wider text-foreground">Επικοινωνία</h3>
             <div className="space-y-4 text-muted-foreground">
                <div className="flex items-center justify-center gap-3">
