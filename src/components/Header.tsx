@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { X } from 'lucide-react';
 import Link from 'next/link';
-import { gsap } from '@/lib/gsap';
+import { gsap } from "gsap";
 import AnimatedBurgerIcon from './AnimatedBurgerIcon';
 import Image from "next/image"
 
@@ -43,12 +43,12 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 max-w-screen-2xl items-center justify-between w-full">
+      <div className="container flex h-14 items-center justify-between w-full">
         <Link href="/" className="flex items-center gap-2 mr-6">
           <Image src={"/images/logo.png"} width={40} height={40} alt="ParkProfit Logo"/>
         </Link>
         
-        <div className="flex-grow" />
+        <div className="flex-grow w-full" />
 
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild>
