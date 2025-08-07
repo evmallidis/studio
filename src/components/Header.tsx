@@ -10,13 +10,13 @@ import { gsap } from 'gsap';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-  const navLinksRef = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && navRef.current) {
+      const links = navRef.current.children;
       gsap.fromTo(
-        navLinks.current,
+        links,
         { opacity: 0, y: 20 },
         {
           opacity: 1,
@@ -29,8 +29,6 @@ export default function Header() {
       );
     }
   }, [isOpen]);
-
-  const navLinks = useRef<HTMLAnchorElement[]>([]);
 
   const handleLinkClick = () => {
     setIsOpen(false);
@@ -53,7 +51,7 @@ export default function Header() {
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent ref={menuRef} side="right" className="w-[300px] sm:w-[400px]">
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <SheetHeader className="p-4 border-b flex-row justify-between items-center">
                    <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
                       <ParkingCircle className="h-6 w-6 text-primary" />
@@ -69,17 +67,17 @@ export default function Header() {
                   </SheetClose>
                 </SheetHeader>
                 <div className="flex flex-col h-full">
-                  <nav className="flex flex-col items-center justify-center flex-1 gap-8">
-                     <Link ref={(el) => el && (navLinks.current[0] = el)} href="#contact" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                  <nav ref={navRef} className="flex flex-col items-center justify-center flex-1 gap-8">
+                     <Link href="#contact" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
                          Contact Us
                      </Link>
-                     <Link ref={(el) => el && (navLinks.current[1] = el)} href="#services" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                     <Link href="#services" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
                          Services
                      </Link>
-                     <Link ref={(el) => el && (navLinks.current[2] = el)} href="#roi-calculator" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                     <Link href="#roi-calculator" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
                          ROI Calculator
                      </Link>
-                      <Link ref={(el) => el && (navLinks.current[3] = el)} href="#testimonials" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                      <Link href="#testimonials" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
                           Testimonials
                       </Link>
                   </nav>
