@@ -1,60 +1,127 @@
 "use client";
-
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
+import { Autoplay, EffectFade, Pagination,  Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/autoplay';
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import 'swiper/css/effect-fade';
+
+// Our custom button component
+interface Slide {
+  id: number;
+  title: string;
+  tagline: string;
+  image: string;
+  buttons: ButtonProps[];
+}
+
+interface ButtonProps {
+  id: number;
+  text: string;
+  link: string;
+  type: string;
+}
+
+interface DemoSliderProps {
+  data: Slide[];
+}
 
 export default function Hero() {
+
+
   const images = [
     "/images/OK421.jpg", // Replace with your image source
-    // "https://placehold.co/1920x1080/blue", // Replace with your image source
+    "/images/OK382.jpg", // Replace with your image source
     // "https://placehold.co/1920x1080/red", // Replace with your image source
   ];
 
+  const data = [
+    {
+      "id": 1,
+      "title": "Turn Your Unused Space into Profit",
+      "tagline": "We rent your space and transform it into a profitable car parking business. Parking Management is your expert partner for creating comfortable and lucrative parking facilities.",
+      "image": "/images/OK421.jpg",
+      "buttons": [
+        {
+          "id": 1,
+          "text": "Roberto Nickson",
+          "link": "https://www.pexels.com/@rpnickson/",
+          "type": "btn-dark btn-circle"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "GIVE IT A SHOOT",
+      "tagline": "IF YOU LIKE IT",
+      "image": "/images/OK382.jpg",
+      "buttons": [
+        {
+          "id": 1,
+          "text": "Julia M Cameron",
+          "link": "https://www.pexels.com/@julia-m-cameron/",
+          "type": "btn-dark btn-circle"
+        }
+      ]
+    }
+  ];
+  
   return (
-    <section className="relative h-[80vh] w-full overflow-hidden">
-      <div className="absolute inset-0 -z-10 w-full h-full">
-        <Swiper
-          modules={[Autoplay, EffectFade]}
-          spaceBetween={0}
-          slidesPerView={1}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          effect="fade"
-          fadeEffect={{
-            crossFade: true,
-          }}
-          loop={true}
-          className="w-full h-full"
-        >
-          {images.map((image, index) => (
-            <SwiperSlide key={index} className="w-full h-full relative"><Image src={image} alt={`Hero Background ${index + 1}`} layout="fill" objectFit="cover" /></SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-      <div className="container mx-auto flex h-full flex-col items-center justify-center px-4 text-center text-white relative z-10">
-        <h1 className="text-5xl font-bold md:text-6xl drop-shadow-lg">
-          Turn Your Unused Space into Profit
-        </h1>
-        <p className="mt-4 text-xl md:text-2xl max-w-2xl drop-shadow-lg">
-          We rent your space and transform it into a profitable car parking business. Parking Management is your expert partner for creating comfortable and lucrative parking facilities.
-        </p>
-        <div className="mt-8">
-          {/* Play button - add your video player logic here */}
-          <Button
-            size="lg"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground text-lg px-8 py-4"
+    <>
+    <section className="w-full">
+      <div className="h-[80vh]">
+        <ul className="h-full w-full">
+          <Swiper
+            navigation
+            pagination={{ type: "bullets", clickable: true }}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            speed={5000}
+            effect={'fade'}
+            modules={[Autoplay, Navigation, Pagination, EffectFade]}
           >
-            Play Video
-          </Button>
-        </div>
+            {data.map(({ id, image, tagline, title, buttons }) => (
+              <SwiperSlide key={id}>
+                <div
+                  className="h-full w-full absolute left-0 top-0"
+                  style={{
+                    background: `url(${image}) center center / cover scroll no-repeat`,
+                  }}
+                ></div>
+                <div className="h-full w-full absolute left-0 top-0 bg-black opacity-20"></div>
+                <div className="relative z-10 h-full flex items-center justify-center">
+                  <div className="text-center">
+                    {tagline && (
+                      <p className="text-md sm:text-xl lg:text-3xl font-semibold text-white">
+                        {tagline}
+                      </p>
+                    )}
+                    <p className="text-3xl sm:text-6xl lg:text-8xl font-bold text-white">
+                      {title}
+                    </p>
+                    {buttons.length > 0 ? (
+                      <p className=" bg-gray-800 inline-block px-9 py-2 rounded-full text-white mt-10 lg:mt-20">
+                        {/* <SliderButtons buttons={buttons} /> */}
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </ul>
       </div>
     </section>
+
+    
+    
+    </>
   );
 }

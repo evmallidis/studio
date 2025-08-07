@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.swiper {
+  height: 100%;
+  width: 100%;
+}
+
+.swiper .swiper-pagination-bullet-active {
+  transform: scale(2);
+  transform-origin: center;
+}
+
 @layer base {
   :root {
     --background: 228 67% 97%;
@@ -82,9 +92,7 @@
     @apply bg-background text-foreground;
   }
   body {
-    display: flex;
-    justify-content: center;
-    margin: 1rem; /* Default margin for small screens */
+    
   }
 }
 
