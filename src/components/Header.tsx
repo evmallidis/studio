@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { X, ParkingCircle } from 'lucide-react';
 import Link from 'next/link';
-import { gsap } from 'gsap';
+import { gsap } from '@/lib/gsap';
 import AnimatedBurgerIcon from './AnimatedBurgerIcon';
 
 export default function Header() {
