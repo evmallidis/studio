@@ -16,7 +16,7 @@ export default function Footer() {
   return (
     <footer id="contact" className="bg-secondary text-foreground">
       <div className="container py-16">
-        <div className="flex flex-col md:flex-row justify-center items-start text-center gap-12">
+        <div className="flex flex-col justify-center items-center text-center gap-12">
           
           <div className="flex flex-col items-center space-y-4 w-full md:w-1/3">
             <Link href="/" className="flex items-center gap-2 mb-4">
