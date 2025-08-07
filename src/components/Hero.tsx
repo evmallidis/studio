@@ -42,8 +42,8 @@ export default function Hero() {
   const data = [
     {
       "id": 1,
-      "title": "Turn Your Unused Space into Profit",
-      "tagline": "We rent your space and transform it into a profitable car parking business. Parking Management is your expert partner for creating comfortable and lucrative parking facilities.",
+      "title": "Μετατρέψτε τον Αχρησιμοποίητο Χώρο σας σε Κέρδος",
+      "tagline": "Ενοικιάζουμε τον χώρο σας και τον μετατρέπουμε σε μια κερδοφόρα επιχείρηση στάθμευσης αυτοκινήτων. Η Parking Management είναι ο ειδικός συνεργάτης σας για τη δημιουργία άνετων και επικερδών εγκαταστάσεων στάθμευσης.",
       "image": "/images/OK421.jpg",
       "buttons": [
         {
@@ -56,8 +56,8 @@ export default function Hero() {
     },
     {
       "id": 2,
-      "title": "GIVE IT A SHOOT",
-      "tagline": "IF YOU LIKE IT",
+      "title": "ΔΟΚΙΜΑΣΕ ΤΟ",
+      "tagline": "ΑΝ ΣΟΥ ΑΡΕΣΕΙ",
       "image": "/images/OK382.jpg",
       "buttons": [
         {

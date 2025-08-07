@@ -48,7 +48,7 @@ export default function Header() {
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
                   <Menu className="h-6 w-6" />
-                  <span className="sr-only">Open menu</span>
+                  <span className="sr-only">Άνοιγμα μενού</span>
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
@@ -62,23 +62,23 @@ export default function Header() {
                   <SheetClose asChild>
                      <Button variant="ghost" size="icon">
                       <X className="h-6 w-6" />
-                      <span className="sr-only">Close menu</span>
+                      <span className="sr-only">Κλείσιμο μενού</span>
                     </Button>
                   </SheetClose>
                 </SheetHeader>
                 <div className="flex flex-col h-full">
                   <nav ref={navRef} className="flex flex-col items-center justify-center flex-1 gap-8">
                      <Link href="#contact" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
-                         Contact Us
+                         Επικοινωνία
                      </Link>
                      <Link href="#services" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
-                         Services
+                         Υπηρεσίες
                      </Link>
                      <Link href="#roi-calculator" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
-                         ROI Calculator
+                         Υπολογιστής ROI
                      </Link>
                       <Link href="#testimonials" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
-                          Testimonials
+                          Μαρτυρίες
                       </Link>
                   </nav>
                 </div>

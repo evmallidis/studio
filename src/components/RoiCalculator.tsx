@@ -16,12 +16,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Loader2, TrendingUp, Calculator } from 'lucide-react';
 
 const formSchema = z.object({
-  spaceType: z.enum(['Outdoor', 'Covered', 'Multi-story'], { required_error: 'Please select a space type.' }),
-  spaceSizeSqFt: z.coerce.number().min(100, 'Space must be at least 100 sq ft.'),
-  location: z.string().min(3, 'Location is required.'),
-  averageParkingRate: z.coerce.number().min(0.1, 'Rate must be positive.'),
-  occupancyRate: z.coerce.number().min(0.01, 'Rate must be between 0.01 and 1.').max(1, 'Rate must be between 0.01 and 1.'),
-  peakHoursPerDay: z.coerce.number().min(1, 'Hours must be between 1 and 24.').max(24, 'Hours must be between 1 and 24.'),
+  spaceType: z.enum(['Outdoor', 'Covered', 'Multi-story'], { required_error: 'Παρακαλώ επιλέξτε τύπο χώρου.' }),
+  spaceSizeSqFt: z.coerce.number().min(10, 'Ο χώρος πρέπει να είναι τουλάχιστον 10 τ.μ.'),
+  location: z.string().min(3, 'Η τοποθεσία είναι υποχρεωτική.'),
+  averageParkingRate: z.coerce.number().min(0.1, 'Η τιμή πρέπει να είναι θετική.'),
+  occupancyRate: z.coerce.number().min(0.01, 'Το ποσοστό πρέπει να είναι μεταξύ 0.01 και 1.').max(1, 'Το ποσοστό πρέπει να είναι μεταξύ 0.01 και 1.'),
+  peakHoursPerDay: z.coerce.number().min(1, 'Οι ώρες πρέπει να είναι μεταξύ 1 και 24.').max(24, 'Οι ώρες πρέπει να είναι μεταξύ 1 και 24.'),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -51,8 +51,8 @@ export default function RoiCalculator() {
     } else {
       toast({
         variant: 'destructive',
-        title: 'Error',
-        description: response.error || 'Failed to estimate ROI. Please try again.',
+        title: 'Σφάλμα',
+        description: response.error || 'Η εκτίμηση ROI απέτυχε. Παρακαλώ δοκιμάστε ξανά.',
       });
     }
   }
@@ -62,9 +62,9 @@ export default function RoiCalculator() {
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div>
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Free ROI Estimation</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Δωρεάν Εκτίμηση ROI</h2>
             <p className="max-w-2xl mt-4 text-muted-foreground md:text-lg">
-              Use our AI-powered tool to get an instant estimate of your potential parking revenue. Just fill in the details about your space.
+              Χρησιμοποιήστε το εργαλείο μας με τεχνητή νοημοσύνη για να λάβετε μια άμεση εκτίμηση των πιθανών εσόδων σας από τη στάθμευση. Απλώς συμπληρώστε τις λεπτομέρειες για τον χώρο σας.
             </p>
             <Card className="mt-8">
               <CardContent className="p-6">
@@ -75,15 +75,15 @@ export default function RoiCalculator() {
                       name="spaceType"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Space Type</FormLabel>
+                          <FormLabel>Τύπος Χώρου</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger><SelectValue placeholder="Select space type" /></SelectTrigger>
+                              <SelectTrigger><SelectValue placeholder="Επιλέξτε τύπο χώρου" /></SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              <SelectItem value="Outdoor">Outdoor</SelectItem>
-                              <SelectItem value="Covered">Covered / Underground</SelectItem>
-                              <SelectItem value="Multi-story">Multi-story Building</SelectItem>
+                              <SelectItem value="Outdoor">Υπαίθριος</SelectItem>
+                              <SelectItem value="Covered">Στεγασμένος / Υπόγειος</SelectItem>
+                              <SelectItem value="Multi-story">Πολυώροφο Κτίριο</SelectItem>
                             </SelectContent>
                           </Select>
                           <FormMessage />
@@ -95,8 +95,8 @@ export default function RoiCalculator() {
                       name="spaceSizeSqFt"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Space Size (sq ft)</FormLabel>
-                          <FormControl><Input type="number" placeholder="e.g., 5000" {...field} /></FormControl>
+                          <FormLabel>Μέγεθος Χώρου (τ.μ.)</FormLabel>
+                          <FormControl><Input type="number" placeholder="π.χ., 500" {...field} /></FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -106,8 +106,8 @@ export default function RoiCalculator() {
                       name="location"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Location</FormLabel>
-                          <FormControl><Input placeholder="e.g., Downtown, Athens" {...field} /></FormControl>
+                          <FormLabel>Τοποθεσία</FormLabel>
+                          <FormControl><Input placeholder="π.χ., Κέντρο, Αθήνα" {...field} /></FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -117,8 +117,8 @@ export default function RoiCalculator() {
                       name="averageParkingRate"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Average Hourly Parking Rate (€)</FormLabel>
-                          <FormControl><Input type="number" step="0.1" placeholder="e.g., 2.5" {...field} /></FormControl>
+                          <FormLabel>Μέση Ωριαία Τιμή Στάθμευσης (€)</FormLabel>
+                          <FormControl><Input type="number" step="0.1" placeholder="π.χ., 2.5" {...field} /></FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -128,8 +128,8 @@ export default function RoiCalculator() {
                       name="occupancyRate"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Estimated Occupancy Rate (Peak Hours)</FormLabel>
-                          <FormControl><Input type="number" step="0.01" placeholder="e.g., 0.8 for 80%" {...field} /></FormControl>
+                          <FormLabel>Εκτιμώμενο Ποσοστό Πληρότητας (Ώρες Αιχμής)</FormLabel>
+                          <FormControl><Input type="number" step="0.01" placeholder="π.χ., 0.8 για 80%" {...field} /></FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -139,15 +139,15 @@ export default function RoiCalculator() {
                       name="peakHoursPerDay"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Peak Hours per Day</FormLabel>
-                          <FormControl><Input type="number" placeholder="e.g., 8" {...field} /></FormControl>
+                          <FormLabel>Ώρες Αιχμής ανά Ημέρα</FormLabel>
+                          <FormControl><Input type="number" placeholder="π.χ., 8" {...field} /></FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
                     <Button type="submit" disabled={isLoading} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
                       {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Calculator className="mr-2 h-4 w-4" />}
-                      Estimate Revenue
+                      Εκτίμηση Εσόδων
                     </Button>
                   </form>
                 </Form>
@@ -158,34 +158,34 @@ export default function RoiCalculator() {
             <Card className="shadow-lg">
               <CardHeader>
                 <CardTitle className="font-headline flex items-center gap-2">
-                  <TrendingUp className="text-primary" /> Your Potential ROI
+                  <TrendingUp className="text-primary" /> Η Πιθανή σας Απόδοση Επένδυσης (ROI)
                 </CardTitle>
-                <CardDescription>Your estimated earnings will appear here.</CardDescription>
+                <CardDescription>Τα εκτιμώμενα κέρδη σας θα εμφανιστούν εδώ.</CardDescription>
               </CardHeader>
               <CardContent className="min-h-[250px] flex items-center justify-center">
                 {isLoading ? (
                   <div className="flex flex-col items-center gap-4">
                     <Loader2 className="h-12 w-12 animate-spin text-primary" />
-                    <p className="text-muted-foreground">Calculating your earnings...</p>
+                    <p className="text-muted-foreground">Υπολογισμός των κερδών σας...</p>
                   </div>
                 ) : result ? (
                   <div className="w-full space-y-4 text-center">
                     <div>
-                      <p className="text-sm text-muted-foreground">Estimated Monthly Revenue</p>
-                      <p className="text-4xl font-bold font-headline text-primary">€{result.estimatedMonthlyRevenue.toLocaleString()}</p>
+                      <p className="text-sm text-muted-foreground">Εκτιμώμενα Μηνιαία Έσοδα</p>
+                      <p className="text-4xl font-bold font-headline text-primary">€{result.estimatedMonthlyRevenue.toLocaleString('el-GR')}</p>
                     </div>
                      <div>
-                      <p className="text-sm text-muted-foreground">Estimated Annual Revenue</p>
-                      <p className="text-5xl font-bold font-headline text-primary">€{result.estimatedAnnualRevenue.toLocaleString()}</p>
+                      <p className="text-sm text-muted-foreground">Εκτιμώμενα Ετήσια Έσοδα</p>
+                      <p className="text-5xl font-bold font-headline text-primary">€{result.estimatedAnnualRevenue.toLocaleString('el-GR')}</p>
                     </div>
                     <div className="pt-4">
-                       <p className="text-sm font-semibold">AI Recommendation:</p>
+                       <p className="text-sm font-semibold">Σύσταση AI:</p>
                        <p className="text-muted-foreground italic">"{result.recommendation}"</p>
                     </div>
                   </div>
                 ) : (
                   <div className="text-center text-muted-foreground">
-                    <p>Fill out the form to see your potential revenue.</p>
+                    <p>Συμπληρώστε τη φόρμα για να δείτε τα πιθανά σας έσοδα.</p>
                   </div>
                 )}
               </CardContent>

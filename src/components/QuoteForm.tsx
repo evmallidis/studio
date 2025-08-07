@@ -14,12 +14,12 @@ import { Textarea } from '@/components/ui/textarea';
 import { Loader2, Send } from 'lucide-react';
 
 const formSchema = z.object({
-  municipality: z.string().min(1, 'Municipality is required.'),
-  propertyType: z.string().min(1, 'Please select a property type.'),
-  totalArea: z.coerce.number().min(1, 'Total area is required.'),
-  area: z.string().min(1, 'Area is required.'),
-  collaborationType: z.string().min(1, 'Please select a collaboration type.'),
-  email: z.string().email('Invalid email address.'),
+  municipality: z.string().min(1, 'Ο Δήμος είναι υποχρεωτικός.'),
+  propertyType: z.string().min(1, 'Παρακαλώ επιλέξτε τύπο ακινήτου.'),
+  totalArea: z.coerce.number().min(1, 'Η συνολική έκταση είναι υποχρεωτική.'),
+  area: z.string().min(1, 'Η περιοχή είναι υποχρεωτική.'),
+  collaborationType: z.string().min(1, 'Παρακαλώ επιλέξτε τύπο συνεργασίας.'),
+  email: z.string().email('Μη έγκυρη διεύθυνση email.'),
   comments: z.string().optional(),
 });
 
@@ -50,8 +50,8 @@ export default function QuoteForm() {
     
     setIsLoading(false);
     toast({
-      title: 'Form Submitted!',
-      description: 'Thank you for your interest. We will get back to you shortly.',
+      title: 'Η Φόρμα Υποβλήθηκε!',
+      description: 'Σας ευχαριστούμε για το ενδιαφέρον σας. Θα επικοινωνήσουμε μαζί σας σύντομα.',
     });
     form.reset();
   }
@@ -61,9 +61,9 @@ export default function QuoteForm() {
       <div className="container">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Request a Quote</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Αίτηση Προσφοράς</h2>
             <p className="max-w-2xl mx-auto mt-4 text-muted-foreground md:text-lg">
-              Interested in our services? Fill out the form below to get a personalized quote.
+              Ενδιαφέρεστε για τις υπηρεσίες μας; Συμπληρώστε την παρακάτω φόρμα για να λάβετε μια εξατομικευμένη προσφορά.
             </p>
           </div>
           <Card className="shadow-lg">
@@ -76,8 +76,8 @@ export default function QuoteForm() {
                       name="municipality"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Municipality</FormLabel>
-                          <FormControl><Input placeholder="e.g., Athens" {...field} /></FormControl>
+                          <FormLabel>Δήμος</FormLabel>
+                          <FormControl><Input placeholder="π.χ., Αθήνα" {...field} /></FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -87,8 +87,8 @@ export default function QuoteForm() {
                       name="area"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Area</FormLabel>
-                          <FormControl><Input placeholder="e.g., Kolonaki" {...field} /></FormControl>
+                          <FormLabel>Περιοχή</FormLabel>
+                          <FormControl><Input placeholder="π.χ., Κολωνάκι" {...field} /></FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -98,16 +98,16 @@ export default function QuoteForm() {
                       name="propertyType"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Property Type</FormLabel>
+                          <FormLabel>Τύπος Ακινήτου</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger><SelectValue placeholder="Select property type" /></SelectTrigger>
+                              <SelectTrigger><SelectValue placeholder="Επιλέξτε τύπο ακινήτου" /></SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              <SelectItem value="Parking in operation">Parking in operation</SelectItem>
-                              <SelectItem value="Outdoor space">Outdoor space</SelectItem>
-                              <SelectItem value="Indoor space">Indoor space</SelectItem>
-                              <SelectItem value="Undeveloped space">Undeveloped space</SelectItem>
+                              <SelectItem value="Parking σε λειτουργία">Parking σε λειτουργία</SelectItem>
+                              <SelectItem value="Υπαίθριος χώρος">Υπαίθριος χώρος</SelectItem>
+                              <SelectItem value="Κλειστός χώρος">Κλειστός χώρος</SelectItem>
+                              <SelectItem value="Αδιαμόρφωτος χώρος">Αδιαμόρφωτος χώρος</SelectItem>
                             </SelectContent>
                           </Select>
                           <FormMessage />
@@ -119,18 +119,18 @@ export default function QuoteForm() {
                       name="collaborationType"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Collaboration Type</FormLabel>
+                          <FormLabel>Τύπος Συνεργασίας</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
-                              <SelectTrigger><SelectValue placeholder="Select collaboration type" /></SelectTrigger>
+                              <SelectTrigger><SelectValue placeholder="Επιλέξτε τύπο συνεργασίας" /></SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              <SelectItem value="Lease">Lease</SelectItem>
-                              <SelectItem value="Configuration">Configuration</SelectItem>
-                              <SelectItem value="Organization">Organization</SelectItem>
-                              <SelectItem value="Management">Management</SelectItem>
-                              <SelectItem value="Equipment">Equipment</SelectItem>
-                              <SelectItem value="Staffing">Staffing</SelectItem>
+                              <SelectItem value="Μίσθωση">Μίσθωση</SelectItem>
+                              <SelectItem value="Διαμόρφωση">Διαμόρφωση</SelectItem>
+                              <SelectItem value="Οργάνωση">Οργάνωση</SelectItem>
+                              <SelectItem value="Διαχείριση">Διαχείριση</SelectItem>
+                              <SelectItem value="Εξοπλισμός">Εξοπλισμός</SelectItem>
+                              <SelectItem value="Στελέχωση">Στελέχωση</SelectItem>
                             </SelectContent>
                           </Select>
                           <FormMessage />
@@ -142,8 +142,8 @@ export default function QuoteForm() {
                       name="totalArea"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Total Area (sq. m.)</FormLabel>
-                          <FormControl><Input type="number" placeholder="e.g., 2000" {...field} /></FormControl>
+                          <FormLabel>Συνολική Έκταση (τ.μ.)</FormLabel>
+                          <FormControl><Input type="number" placeholder="π.χ., 2000" {...field} /></FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -165,15 +165,15 @@ export default function QuoteForm() {
                     name="comments"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Comments & Phone Number</FormLabel>
-                        <FormControl><Textarea placeholder="Leave your comments and a contact phone number here..." {...field} /></FormControl>
+                        <FormLabel>Σχόλια & Τηλέφωνο Επικοινωνίας</FormLabel>
+                        <FormControl><Textarea placeholder="Αφήστε τα σχόλιά σας και ένα τηλέφωνο επικοινωνίας εδώ..." {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
                   <Button type="submit" disabled={isLoading} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
                     {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send className="mr-2 h-4 w-4" />}
-                    Submit
+                    Υποβολή
                   </Button>
                 </form>
               </Form>

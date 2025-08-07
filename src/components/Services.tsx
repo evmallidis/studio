@@ -11,23 +11,23 @@ interface Service {
 const services: Service[] = [
   {
     icon: Sun,
-    title: 'Outdoor Spaces',
-    description: 'We optimize open-air lots for maximum capacity and efficiency.',
+    title: 'Υπαίθριοι Χώροι',
+    description: 'Βελτιστοποιούμε υπαίθριους χώρους για μέγιστη χωρητικότητα και αποδοτικότητα.',
   },
   {
     icon: ParkingSquare,
-    title: 'Covered & Underground',
-    description: 'Transforming covered or underground areas into secure, premium parking spots.',
+    title: 'Στεγασμένοι & Υπόγειοι',
+    description: 'Μετατρέπουμε στεγασμένους ή υπόγειους χώρους σε ασφαλείς, premium θέσεις στάθμευσης.',
   },
   {
     icon: Building2,
-    title: 'Multi-story Buildings',
-    description: 'Converting entire buildings into high-capacity, profitable parking structures.',
+    title: 'Πολυώροφα Κτίρια',
+    description: 'Μετατρέπουμε ολόκληρα κτίρια σε υψηλής χωρητικότητας, κερδοφόρες εγκαταστάσεις στάθμευσης.',
   },
   {
     icon: ParkingCircle,
-    title: 'Existing Parking Lots',
-    description: 'Upgrading and managing existing parking facilities to boost revenue and customer satisfaction.',
+    title: 'Υφιστάμενοι Χώροι Στάθμευσης',
+    description: 'Αναβαθμίζουμε και διαχειριζόμαστε υπάρχουσες εγκαταστάσεις για αύξηση εσόδων και ικανοποίησης πελατών.',
   },
 ];
 
@@ -36,9 +36,9 @@ export default function Services() {
     <section id="services" className="py-12 md:py-24">
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Our Parking Solutions</h2>
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Οι Λύσεις Στάθμευσης Μας</h2>
           <p className="max-w-2xl mx-auto mt-4 text-muted-foreground md:text-lg">
-            We handle everything, turning any space into a professional parking facility.
+            Αναλαμβάνουμε τα πάντα, μετατρέποντας οποιονδήποτε χώρο σε μια επαγγελματική εγκατάσταση στάθμευσης.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

@@ -15,34 +15,34 @@ import {z} from 'genkit';
 const RoiEstimationInputSchema = z.object({
   spaceType: z
     .string()
-    .describe("The type of parking space: 'Outdoor', 'Covered', 'Multi-story'."),
-  spaceSizeSqFt: z.number().describe('The size of the space in square feet.'),
-  location: z.string().describe('The location of the space.'),
+    .describe("Ο τύπος του χώρου στάθμευσης: 'Υπαίθριος', 'Στεγασμένος', 'Πολυώροφος'."),
+  spaceSizeSqFt: z.number().describe('Το μέγεθος του χώρου σε τετραγωνικά μέτρα.'),
+  location: z.string().describe('Η τοποθεσία του χώρου.'),
   averageParkingRate: z
     .number()
-    .describe('The average hourly parking rate in the area.'),
+    .describe('Η μέση ωριαία τιμή στάθμευσης στην περιοχή.'),
   occupancyRate: z
     .number()
     .describe(
-      'The estimated average occupancy rate of the parking space during peak hours (as a decimal, e.g., 0.8 for 80%).'
+      'Το εκτιμώμενο μέσο ποσοστό πληρότητας του χώρου στάθμευσης κατά τις ώρες αιχμής (ως δεκαδικός, π.χ., 0.8 για 80%).'
     ),
   peakHoursPerDay: z
     .number()
-    .describe('The number of peak hours per day the parking space is likely to be occupied.'),
+    .describe('Ο αριθμός των ωρών αιχμής ανά ημέρα που ο χώρος στάθμευσης είναι πιθανό να είναι κατειλημμένος.'),
 });
 export type RoiEstimationInput = z.infer<typeof RoiEstimationInputSchema>;
 
 const RoiEstimationOutputSchema = z.object({
   estimatedMonthlyRevenue: z
     .number()
-    .describe('The estimated monthly revenue from the parking space.'),
+    .describe('Τα εκτιμώμενα μηνιαία έσοδα από τον χώρο στάθμευσης.'),
   estimatedAnnualRevenue: z
     .number()
-    .describe('The estimated annual revenue from the parking space.'),
+    .describe('Τα εκτιμώμενα ετήσια έσοδα από τον χώρο στάθμευσης.'),
   recommendation: z
     .string()
     .describe(
-      'A recommendation on whether to proceed with converting the space into a parking facility, based on the estimated ROI.'
+      'Μια σύσταση για το αν πρέπει να προχωρήσετε με τη μετατροπή του χώρου σε εγκατάσταση στάθμευσης, βασισμένη στην εκτιμώμενη απόδοση επένδυσης (ROI). Η απάντηση πρέπει να είναι στα Ελληνικά.'
     ),
 });
 export type RoiEstimationOutput = z.infer<typeof RoiEstimationOutputSchema>;
@@ -55,22 +55,22 @@ const prompt = ai.definePrompt({
   name: 'roiEstimationPrompt',
   input: {schema: RoiEstimationInputSchema},
   output: {schema: RoiEstimationOutputSchema},
-  prompt: `You are an expert in parking facility ROI estimation.
+  prompt: `Είστε ειδικός στην εκτίμηση της απόδοσης επένδυσης (ROI) για εγκαταστάσεις στάθμευσης.
 
-You will use the following information to estimate the potential revenue of converting a space into a parking facility, and provide a recommendation on whether to proceed.
+Θα χρησιμοποιήσετε τις παρακάτω πληροφορίες για να εκτιμήσετε τα πιθανά έσοδα από τη μετατροπή ενός χώρου σε εγκατάσταση στάθμευσης και θα παρέχετε μια σύσταση για το αν πρέπει να προχωρήσετε.
 
-Space Type: {{{spaceType}}}
-Space Size (Sq Ft): {{{spaceSizeSqFt}}}
-Location: {{{location}}}
-Average Parking Rate (Hourly): {{{averageParkingRate}}}
-Occupancy Rate (Peak Hours): {{{occupancyRate}}}
-Peak Hours Per Day: {{{peakHoursPerDay}}}
+Τύπος Χώρου: {{{spaceType}}}
+Μέγεθος Χώρου (τ.μ.): {{{spaceSizeSqFt}}}
+Τοποθεσία: {{{location}}}
+Μέση Ωριαία Τιμή Στάθμευσης: {{{averageParkingRate}}}
+Ποσοστό Πληρότητας (Ώρες Αιχμής): {{{occupancyRate}}}
+Ώρες Αιχμής ανά Ημέρα: {{{peakHoursPerDay}}}
 
-Based on this information, calculate the estimated monthly and annual revenue, and provide a recommendation.
+Με βάση αυτές τις πληροφορίες, υπολογίστε τα εκτιμώμενα μηνιαία και ετήσια έσοδα και δώστε μια σύσταση. Η απάντησή σας πρέπει να είναι στα Ελληνικά.
 
-Consider factors such as location, space type, and occupancy rate when making your recommendation.
+Λάβετε υπόψη παράγοντες όπως η τοποθεσία, ο τύπος του χώρου και το ποσοστό πληρότητας κατά τη διαμόρφωση της σύστασής σας.
 
-Ensure all calculations are accurate and the recommendation is well-justified.`,
+Βεβαιωθείτε ότι όλοι οι υπολογισμοί είναι ακριβείς και η σύσταση είναι καλά τεκμηριωμένη.`,
 });
 
 const roiEstimationFlow = ai.defineFlow(
