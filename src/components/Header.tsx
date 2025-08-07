@@ -46,6 +46,7 @@ export default function Header() {
       <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2 mr-6">
           <Image src={"/images/logo.png"} width={40} height={40} alt="ParkProfit Logo"/>
+           <span className="font-bold font-headline text-xl">ParkProfit</span>
         </Link>
         
         <div className="flex-grow" />
@@ -57,17 +58,11 @@ export default function Header() {
               <span className="sr-only">Άνοιγμα μενού</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-            <SheetHeader className="p-4 border-b flex-row justify-between items-center">
+          <SheetContent side="right" className="w-[300px] sm:w-[400px] p-0">
+            <SheetHeader className="p-4 border-b">
                 <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
                   <Image src={"/images/logo.png"} width={40} height={40} alt="ParkProfit Logo"/>
                 </Link>
-              <SheetClose asChild>
-                  <Button variant="ghost" size="icon">
-                  <X className="h-6 w-6" />
-                  <span className="sr-only">Κλείσιμο μενού</span>
-                </Button>
-              </SheetClose>
             </SheetHeader>
             <div className="flex flex-col h-full">
               <nav ref={navRef} className="flex flex-col items-center justify-center flex-1 gap-8">
