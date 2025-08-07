@@ -10,8 +10,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        body: ['"Noto Sans"', 'sans-serif'],
-        headline: ['Manrope', 'sans-serif'],
+        body: ['"Open Sans"', 'sans-serif'],
+        headline: ['Montserrat', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
