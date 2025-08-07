@@ -6,8 +6,9 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { X, ParkingCircle } from 'lucide-react';
 import Link from 'next/link';
-import { gsap } from "@/lib/gsap";
+import { gsap } from '@/lib/gsap';
 import AnimatedBurgerIcon from './AnimatedBurgerIcon';
+import Image from "next/image"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,7 +45,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <Link href="/" className="flex items-center gap-2 mr-6">
-          <ParkingCircle className="h-6 w-6 text-primary" />
+          <Image src={"/images/logo.png"} width={40} height={40} alt="ParkProfit Logo"/>
           <span className="font-bold text-lg font-headline">ParkProfit</span>
         </Link>
         <div className="flex flex-1 items-center justify-end">
