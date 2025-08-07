@@ -67,7 +67,7 @@ export default function AnimatedRoad() {
     ).fromTo(
       lines,
       { drawSVG: '0%' },
-      { drawSVG: '100%', duration: 0.8, stagger: 0.02, ease: 'none' },
+      { drawSVG: '100%', duration: 1, ease: 'none' },
       0
     );
 
