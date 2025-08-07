@@ -32,7 +32,7 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="py-12 md:py-24">
+    <section id="testimonials" className="py-16 md:py-24 bg-secondary">
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Ιστορίες Επιτυχίας</h2>
@@ -42,17 +42,17 @@ export default function Testimonials() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.name} className="bg-white shadow-lg flex flex-col">
-              <CardContent className="p-6 flex-grow flex flex-col">
-                 <Quote className="w-8 h-8 text-primary mb-4" />
-                <p className="text-muted-foreground italic mb-6 flex-grow">"{testimonial.quote}"</p>
-                <div className="flex items-center gap-4 mt-auto">
-                  <Avatar>
-                    <AvatarImage src="https://placehold.co/40x40.png" alt={testimonial.name} data-ai-hint="person portrait" />
-                    <AvatarFallback>{testimonial.avatar}</AvatarFallback>
+            <Card key={testimonial.name} className="bg-card shadow-lg flex flex-col hover:shadow-2xl transition-shadow duration-300 ease-in-out">
+              <CardContent className="p-8 flex-grow flex flex-col">
+                 <Quote className="w-10 h-10 text-primary mb-6" />
+                <p className="text-muted-foreground italic mb-6 flex-grow leading-relaxed">"{testimonial.quote}"</p>
+                <div className="flex items-center gap-4 mt-auto pt-6 border-t">
+                  <Avatar className="h-12 w-12">
+                    <AvatarImage src="https://placehold.co/48x48.png" alt={testimonial.name} data-ai-hint="person portrait" />
+                    <AvatarFallback className="text-lg">{testimonial.avatar}</AvatarFallback>
                   </Avatar>
                   <div>
-                    <p className="font-semibold font-headline">{testimonial.name}</p>
+                    <p className="font-semibold font-headline text-lg">{testimonial.name}</p>
                     <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                   </div>
                 </div>

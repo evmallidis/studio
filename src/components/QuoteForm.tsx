@@ -57,7 +57,7 @@ export default function QuoteForm() {
   }
 
   return (
-    <section id="quote-form" className="py-12 md:py-24 bg-white">
+    <section id="quote-form" className="py-16 md:py-24 bg-white">
       <div className="container">
         <div className="mx-auto max-w-3xl">
           <div className="text-center mb-12">
@@ -66,8 +66,8 @@ export default function QuoteForm() {
               Ενδιαφέρεστε για τις υπηρεσίες μας; Συμπληρώστε την παρακάτω φόρμα για να λάβετε μια εξατομικευμένη προσφορά.
             </p>
           </div>
-          <Card className="shadow-lg">
-            <CardContent className="p-6">
+          <Card className="shadow-2xl">
+            <CardContent className="p-8">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -166,14 +166,14 @@ export default function QuoteForm() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel>Σχόλια & Τηλέφωνο Επικοινωνίας</FormLabel>
-                        <FormControl><Textarea placeholder="Αφήστε τα σχόλιά σας και ένα τηλέφωνο επικοινωνίας εδώ..." {...field} /></FormControl>
+                        <FormControl><Textarea rows={4} placeholder="Αφήστε τα σχόλιά σας και ένα τηλέφωνο επικοινωνίας εδώ..." {...field} /></FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" disabled={isLoading} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
-                    {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send className="mr-2 h-4 w-4" />}
-                    Υποβολή
+                  <Button type="submit" disabled={isLoading} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground py-6 text-lg">
+                    {isLoading ? <Loader2 className="mr-2 h-5 w-5 animate-spin" /> : <Send className="mr-2 h-5 w-5" />}
+                    Υποβολή Αιτήματος
                   </Button>
                 </form>
               </Form>

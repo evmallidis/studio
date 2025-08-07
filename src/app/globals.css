@@ -91,15 +91,4 @@
   body {
     @apply bg-background text-foreground;
   }
-  body {
-    
-  }
 }
-
-@media (min-width: 768px) { /* Adjust margin for medium screens */
-  body {
-    margin: 2rem;
-  }
-}
-
-/* You can add more media queries for larger screens if needed */

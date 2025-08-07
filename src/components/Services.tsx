@@ -33,7 +33,7 @@ const services: Service[] = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-12 md:py-24">
+    <section id="services" className="py-16 md:py-24">
       <div className="container">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Οι Λύσεις Στάθμευσης Μας</h2>
@@ -43,15 +43,15 @@ export default function Services() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service) => (
-            <Card key={service.title} className="flex flex-col items-center text-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <Card key={service.title} className="flex flex-col items-center text-center shadow-lg hover:shadow-2xl transition-shadow duration-300 ease-in-out hover:-translate-y-2">
               <CardHeader>
                 <div className="mx-auto bg-primary/10 p-4 rounded-full">
-                  <service.icon className="h-8 w-8 text-primary" />
+                  <service.icon className="h-10 w-10 text-primary" />
                 </div>
               </CardHeader>
-              <CardContent className="flex-grow">
-                <CardTitle className="mb-2 font-headline">{service.title}</CardTitle>
-                <p className="text-muted-foreground">{service.description}</p>
+              <CardContent className="flex-grow p-6 pt-0">
+                <CardTitle className="mb-2 font-headline text-lg">{service.title}</CardTitle>
+                <p className="text-muted-foreground leading-relaxed">{service.description}</p>
               </CardContent>
             </Card>
           ))}

@@ -11,12 +11,12 @@ const stats: Stat[] = [
   { value: 281, label: 'Μελέτες' },
   { value: 172, label: 'Συνεργασίες' },
   { value: 2013, label: 'Θέσεις Στάθμευσης' },
-  { value: 88, label: 'Clients' }, // Assuming "Clients" for the last one
+  { value: 88, label: 'Πελάτες' },
 ];
 
 const Counter = ({ to }: { to: number }) => {
   const [count, setCount] = useState(0);
-  const duration = 2000; // 2 seconds
+  const duration = 2000;
 
   useEffect(() => {
     let startTime: number;
@@ -32,7 +32,7 @@ const Counter = ({ to }: { to: number }) => {
     requestAnimationFrame(animate);
   }, [to]);
 
-  return <span className="text-5xl font-bold font-headline text-primary">{count}+</span>;
+  return <span className="text-5xl font-bold font-headline text-primary">{count.toLocaleString('el-GR')}+</span>;
 };
 
 export default function Stats() {
@@ -64,7 +64,7 @@ export default function Stats() {
   }, []);
 
   return (
-    <section ref={statsRef} id="stats" className="py-12 md:py-24 bg-secondary">
+    <section ref={statsRef} id="stats" className="py-16 md:py-24 bg-secondary">
       <div className="container">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {stats.map((stat) => (

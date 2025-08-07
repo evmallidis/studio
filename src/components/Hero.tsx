@@ -16,112 +16,75 @@ interface Slide {
   title: string;
   tagline: string;
   image: string;
-  buttons: ButtonProps[];
-}
-
-interface ButtonProps {
-  id: number;
-  text: string;
-  link: string;
-  type: string;
-}
-
-interface DemoSliderProps {
-  data: Slide[];
 }
 
 export default function Hero() {
 
-
-  const images = [
-    "/images/OK421.jpg", // Replace with your image source
-    "/images/OK382.jpg", // Replace with your image source
-    // "https://placehold.co/1920x1080/red", // Replace with your image source
-  ];
-
-  const data = [
+  const data: Slide[] = [
     {
       "id": 1,
       "title": "Μετατρέψτε τον Αχρησιμοποίητο Χώρο σας σε Κέρδος",
-      "tagline": "Ενοικιάζουμε τον χώρο σας και τον μετατρέπουμε σε μια κερδοφόρα επιχείρηση στάθμευσης αυτοκινήτων. Η Parking Management είναι ο ειδικός συνεργάτης σας για τη δημιουργία άνετων και επικερδών εγκαταστάσεων στάθμευσης.",
+      "tagline": "Αξιοποιούμε τον χώρο σας και τον μετατρέπουμε σε μια κερδοφόρα επιχείρηση στάθμευσης. Γίνετε ο συνεργάτης μας για τη δημιουργία σύγχρονων και αποδοτικών εγκαταστάσεων.",
       "image": "/images/OK421.jpg",
-      "buttons": [
-        {
-          "id": 1,
-          "text": "Roberto Nickson",
-          "link": "https://www.pexels.com/@rpnickson/",
-          "type": "btn-dark btn-circle"
-        }
-      ]
     },
     {
       "id": 2,
-      "title": "ΔΟΚΙΜΑΣΕ ΤΟ",
-      "tagline": "ΑΝ ΣΟΥ ΑΡΕΣΕΙ",
+      "title": "Έξυπνη Διαχείριση, Μεγαλύτερα Κέρδη",
+      "tagline": "Αναβαθμίστε τον υπάρχοντα χώρο στάθμευσής σας με τεχνολογία αιχμής και επαγγελματική διαχείριση. Αυξήστε τα έσοδα και την ικανοποίηση των πελατών σας μαζί μας.",
       "image": "/images/OK382.jpg",
-      "buttons": [
-        {
-          "id": 1,
-          "text": "Julia M Cameron",
-          "link": "https://www.pexels.com/@julia-m-cameron/",
-          "type": "btn-dark btn-circle"
-        }
-      ]
     }
   ];
   
   return (
-    <>
-    <section className="w-full">
-      <div className="h-[80vh]">
-        <ul className="h-full w-full">
-          <Swiper
-            navigation
-            pagination={{ type: "bullets", clickable: true }}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
-            }}
-            loop={true}
-            speed={5000}
-            effect={'fade'}
-            modules={[Autoplay, Navigation, Pagination, EffectFade]}
-          >
-            {data.map(({ id, image, tagline, title, buttons }) => (
-              <SwiperSlide key={id}>
-                <div
-                  className="h-full w-full absolute left-0 top-0"
-                  style={{
-                    background: `url(${image}) center center / cover scroll no-repeat`,
-                  }}
-                ></div>
-                <div className="h-full w-full absolute left-0 top-0 bg-black opacity-20"></div>
-                <div className="relative z-10 h-full flex items-center justify-center">
-                  <div className="text-center">
-                    {tagline && (
-                      <p className="text-md sm:text-xl lg:text-3xl font-semibold text-white">
-                        {tagline}
-                      </p>
-                    )}
-                    <p className="text-3xl sm:text-6xl lg:text-8xl font-bold text-white">
-                      {title}
+    <section className="w-full relative">
+      <div className="h-[85vh] max-h-[900px]">
+        <Swiper
+          navigation
+          pagination={{ type: "bullets", clickable: true }}
+          autoplay={{
+            delay: 7000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          effect={'fade'}
+          fadeEffect={{ crossFade: true }}
+          speed={1500}
+          modules={[Autoplay, Navigation, Pagination, EffectFade]}
+          className="h-full"
+        >
+          {data.map(({ id, image, tagline, title }) => (
+            <SwiperSlide key={id}>
+              <div
+                className="h-full w-full absolute inset-0"
+                style={{
+                  background: `url(${image}) center center / cover scroll no-repeat`,
+                }}
+              ></div>
+              <div className="h-full w-full absolute inset-0 bg-black/40"></div>
+              <div className="relative z-10 h-full flex items-center justify-center text-white">
+                <div className="text-center container max-w-4xl px-4">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-headline !leading-tight tracking-tighter">
+                    {title}
+                  </h1>
+                   {tagline && (
+                    <p className="mt-6 text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto text-white/90">
+                      {tagline}
                     </p>
-                    {buttons.length > 0 ? (
-                      <p className=" bg-gray-800 inline-block px-9 py-2 rounded-full text-white mt-10 lg:mt-20">
-                        {/* <SliderButtons buttons={buttons} /> */}
-                      </p>
-                    ) : null}
+                  )}
+                  <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground py-7 px-8 text-lg">
+                      <Link href="#roi-calculator">Υπολογιστής ROI</Link>
+                    </Button>
+                     <Button asChild size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm border-white/50 hover:bg-white/20 text-white py-7 px-8 text-lg">
+                      <Link href="#contact">Επικοινωνήστε Μαζί Μας</Link>
+                    </Button>
                   </div>
                 </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </ul>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </section>
-
-    
-    
-    </>
   );
 }
