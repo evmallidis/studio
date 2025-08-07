@@ -25,7 +25,10 @@ export default function Footer() {
               Αν θέλετε να ξεχωρίζει η επιχείρησή σας, επιλέξτε την παροχή επιπλέον υπηρεσιών στους επισκέπτες σας με λίγες απλές κινήσεις... Ρωτήστε μας.
             </p>
              <p className="text-muted-foreground font-semibold max-w-xs leading-relaxed">
-              Αποκλειστική συνεργασία με το Cloud parking management.
+              Αποκλειστική συνεργασία με το 
+              <Link href="/" className="flex items-center gap-2 mb-4">
+               <Image src={"/images/logo.png"} width={100} height={100} alt="ParkProfit Logo"/>
+            </Link>
             </p>
           </div>
           

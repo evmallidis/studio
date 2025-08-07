@@ -105,7 +105,7 @@ export default function AnimatedRoad() {
         </defs>
         <style type="text/css">{`
             .st0{fill:none;stroke:#4a7ec2;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-            .st1{fill:none;stroke:#ffffff;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:1, 50;}
+            .st1{fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:10, 25;}
         `}</style>
         <path
           id="parkingLines"
