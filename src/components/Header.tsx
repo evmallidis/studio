@@ -43,10 +43,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
+      <div className="container flex h-14 max-w-screen-2xl items-center justify-between w-full">
         <Link href="/" className="flex items-center gap-2 mr-6">
           <Image src={"/images/logo.png"} width={40} height={40} alt="ParkProfit Logo"/>
-           <span className="font-bold font-headline text-xl">ParkProfit</span>
         </Link>
         
         <div className="flex-grow" />
@@ -55,7 +54,6 @@ export default function Header() {
           <SheetTrigger asChild>
             <Button variant="ghost" size="icon">
               <AnimatedBurgerIcon />
-              <span className="sr-only">Άνοιγμα μενού</span>
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px] p-0" hideCloseButton>

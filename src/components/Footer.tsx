@@ -67,7 +67,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-border/20 mt-12 pt-8 text-center text-sm text-muted-foreground/60">
-          <p>&copy; {year} ParkProfit. Με επιφύλαξη παντός δικαιώματος.</p>
+          <p>&copy; {year} UPIO. Με επιφύλαξη παντός δικαιώματος.</p>
         </div>
       </div>
     </footer>
