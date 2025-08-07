@@ -16,8 +16,8 @@ export default function Footer() {
   return (
     <footer id="contact" className="bg-secondary text-foreground">
       <div className="container py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
-          <div className="flex flex-col items-center md:items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+          <div className="flex flex-col items-center">
             <Link href="/" className="flex items-center gap-2 mb-4">
                <Image src={"/images/logo.png"} width={40} height={40} alt="ParkProfit Logo"/>
             </Link>
@@ -26,7 +26,7 @@ export default function Footer() {
             </p>
           </div>
           
-          <div className="flex flex-col items-center md:items-start">
+          <div className="flex flex-col items-center">
             <h3 className="text-lg font-semibold mb-4 font-headline uppercase tracking-wider text-foreground">Υπηρεσίες</h3>
             <ul className="space-y-3">
               <li><Link href="#services" className="hover:underline text-muted-foreground">Υπαίθριοι Χώροι</Link></li>
@@ -36,14 +36,14 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="flex flex-col items-center md:items-start">
+          <div className="flex flex-col items-center">
             <h3 className="text-lg font-semibold mb-4 font-headline uppercase tracking-wider text-foreground">Επικοινωνία</h3>
             <div className="space-y-4">
-              <a href="mailto:contact@parkprofit.com" className="flex items-center justify-center md:justify-start gap-3 hover:underline text-muted-foreground">
+              <a href="mailto:contact@parkprofit.com" className="flex items-center justify-center gap-3 hover:underline text-muted-foreground">
                 <Mail className="h-5 w-5" />
                 <span>contact@parkprofit.com</span>
               </a>
-              <a href="tel:+302101234567" className="flex items-center justify-center md:justify-start gap-3 hover:underline text-muted-foreground">
+              <a href="tel:+302101234567" className="flex items-center justify-center gap-3 hover:underline text-muted-foreground">
                 <Phone className="h-5 w-5" />
                 <span>+30 210 123 4567</span>
               </a>
