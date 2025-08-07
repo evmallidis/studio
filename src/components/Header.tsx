@@ -49,49 +49,46 @@ export default function Header() {
           <span className="font-bold text-lg font-headline">ParkProfit</span>
         </Link>
         <div className="flex flex-1 items-center justify-end">
-          {/* Unified Navigation */}
-          <div>
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="lg">
-                  <AnimatedBurgerIcon />
-                  <span className="sr-only">Άνοιγμα μενού</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-                <SheetHeader className="p-4 border-b flex-row justify-between items-center">
-                   <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
-                      <ParkingCircle className="h-6 w-6 text-primary" />
-                      <SheetTitle>
-                        <span className="font-bold text-lg font-headline">ParkProfit</span>
-                      </SheetTitle>
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="lg">
+                <AnimatedBurgerIcon />
+                <span className="sr-only">Άνοιγμα μενού</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+              <SheetHeader className="p-4 border-b flex-row justify-between items-center">
+                 <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
+                    <ParkingCircle className="h-6 w-6 text-primary" />
+                    <SheetTitle>
+                      <span className="font-bold text-lg font-headline">ParkProfit</span>
+                    </SheetTitle>
+                  </Link>
+                <SheetClose asChild>
+                   <Button variant="ghost" size="icon">
+                    <X className="h-6 w-6" />
+                    <span className="sr-only">Κλείσιμο μενού</span>
+                  </Button>
+                </SheetClose>
+              </SheetHeader>
+              <div className="flex flex-col h-full">
+                <nav ref={navRef} className="flex flex-col items-center justify-center flex-1 gap-8">
+                   <Link href="#contact" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                       Επικοινωνία
+                   </Link>
+                   <Link href="#services" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                       Υπηρεσίες
+                   </Link>
+                   <Link href="#roi-calculator" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                       Υπολογιστής ROI
+                   </Link>
+                    <Link href="#testimonials" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                        Μαρτυρίες
                     </Link>
-                  <SheetClose asChild>
-                     <Button variant="ghost" size="icon">
-                      <X className="h-6 w-6" />
-                      <span className="sr-only">Κλείσιμο μενού</span>
-                    </Button>
-                  </SheetClose>
-                </SheetHeader>
-                <div className="flex flex-col h-full">
-                  <nav ref={navRef} className="flex flex-col items-center justify-center flex-1 gap-8">
-                     <Link href="#contact" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
-                         Επικοινωνία
-                     </Link>
-                     <Link href="#services" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
-                         Υπηρεσίες
-                     </Link>
-                     <Link href="#roi-calculator" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
-                         Υπολογιστής ROI
-                     </Link>
-                      <Link href="#testimonials" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
-                          Μαρτυρίες
-                      </Link>
-                  </nav>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+                </nav>
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
     </header>
