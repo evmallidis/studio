@@ -46,12 +46,11 @@ export default function Header() {
       <div className="container flex h-14 max-w-screen-2xl items-center">
         <Link href="/" className="flex items-center gap-2 mr-6">
           <Image src={"/images/logo.png"} width={40} height={40} alt="ParkProfit Logo"/>
-          <span className="font-bold text-lg font-headline">ParkProfit</span>
         </Link>
         <div className="flex flex-1 items-center justify-end">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="lg">
+              <Button variant="ghost" size="icon">
                 <AnimatedBurgerIcon />
                 <span className="sr-only">Άνοιγμα μενού</span>
               </Button>
