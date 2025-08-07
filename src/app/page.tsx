@@ -11,7 +11,7 @@ import AnimatedRoad from '@/components/AnimatedRoad';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-background relative">
+    <div className="flex flex-col min-h-screen relative">
       <AnimatedRoad />
       <Header />
       <main className="flex min-h-screen flex-col items-center justify-between">
