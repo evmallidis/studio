@@ -26,8 +26,9 @@ export default function Footer() {
             </p>
              <p className="text-muted-foreground font-semibold max-w-xs leading-relaxed">
               Αποκλειστική συνεργασία με το 
-              <Link href="/" className="flex items-center gap-2 mb-4">
-               <Image src={"/images/logo.png"} width={100} height={100} alt="ParkProfit Logo"/>
+              <Link href="https://ipark.gr/" className="flex items-center gap-2 mb-4">
+            
+              <Image src={"/images/LOGO4.png"} alt={"Cloud parking management. ipark.gr"} width={100} height={100} alt="ParkProfit Logo"/>
             </Link>
             </p>
           </div>
