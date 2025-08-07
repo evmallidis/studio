@@ -1,7 +1,8 @@
+
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import { gsap } from '@/lib/gsap';
 
 export default function AnimatedBurgerIcon() {
   const svgRef = useRef<SVGSVGElement>(null);
