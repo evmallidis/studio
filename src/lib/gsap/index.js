@@ -23,6 +23,10 @@ import {
   TimelineMax,
 } from './gsap-core.js'
 import { CSSPlugin } from './CSSPlugin.js'
+import { DrawSVGPlugin } from './DrawSVGPlugin.js'
+import { MotionPathPlugin } from './MotionPathPlugin.min.js'
+import { ScrollTrigger } from './ScrollTrigger.min.js'
+
 
 const gsapWithCSS = gsap.registerPlugin(CSSPlugin) || gsap // to protect from tree shaking
 const TweenMaxWithCSS = gsapWithCSS.core.Tween
@@ -31,6 +35,9 @@ export {
   gsapWithCSS as gsap,
   gsapWithCSS as default,
   CSSPlugin,
+  DrawSVGPlugin,
+  MotionPathPlugin,
+  ScrollTrigger,
   TweenMaxWithCSS as TweenMax,
   TweenLite,
   TimelineMax,
