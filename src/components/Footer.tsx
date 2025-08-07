@@ -1,9 +1,10 @@
 
 'use client';
 
-import { ParkingCircle, Mail, Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import Image from "next/image"
 
 export default function Footer() {
   const [year, setYear] = useState(new Date().getFullYear());
@@ -18,7 +19,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
           <div className="flex flex-col items-center md:items-start">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <ParkingCircle className="h-8 w-8" />
+               <Image src={"/images/logo.png"} width={40} height={40} alt="ParkProfit Logo"/>
               <span className="text-2xl font-bold font-headline">ParkProfit</span>
             </Link>
             <p className="text-primary-foreground/80 max-w-xs leading-relaxed">
