@@ -14,10 +14,10 @@ export default function Footer() {
 
   return (
     <footer id="contact" className="bg-secondary text-foreground">
-      <div className="container py-16">
-        <div className="grid md:grid-cols-3 gap-12 md:gap-16 text-center md:text-left">
+      <div className="container width-full py-16">
+        <div className="width-full flex flex-row justify-center md:grid-cols-3 gap-12 md:gap-16 text-center md:text-left">
           
-          <div className="flex flex-col items-center md:items-start space-y-4">
+          <div className="items-center md:items-start space-y-4">
             <Link href="/" className="flex items-center gap-2 mb-4">
                <Image src={"/images/logo.png"} width={60} height={60} alt="ParkProfit Logo"/>
             </Link>
