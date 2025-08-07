@@ -10,14 +10,45 @@ export default function AnimatedRoad() {
   const svgRef = useRef<SVGSVGElement>(null);
   const carRef = useRef<SVGGElement>(null);
   const pathRef = useRef<SVGPathElement>(null);
-  const parkingLinesRef = useRef<SVGPathElement>(null);
+  const parkingLinesGroupRef = useRef<SVGGElement>(null);
 
   useEffect(() => {
-    if (!svgRef.current || !carRef.current || !pathRef.current || !parkingLinesRef.current) return;
+    if (!svgRef.current || !carRef.current || !pathRef.current || !parkingLinesGroupRef.current) return;
 
     const path = pathRef.current;
     const car = carRef.current;
-    const parkingLines = parkingLinesRef.current;
+    const parkingLinesGroup = parkingLinesGroupRef.current;
+
+    // Clear any previous lines
+    parkingLinesGroup.innerHTML = '';
+
+    const pathLength = path.getTotalLength();
+    const lineCount = 100; // Number of parking lines
+    const lineLength = 30; // Length of each parking line
+
+    for (let i = 0; i < lineCount; i++) {
+      const distance = (i / lineCount) * pathLength;
+      const point = path.getPointAtLength(distance);
+      const pointAhead = path.getPointAtLength(distance + 1);
+      
+      const angle = Math.atan2(pointAhead.y - point.y, pointAhead.x - point.x);
+      const perpendicularAngle = angle + Math.PI / 2;
+
+      const x1 = point.x;
+      const y1 = point.y;
+      const x2 = point.x + lineLength * Math.cos(perpendicularAngle);
+      const y2 = point.y + lineLength * Math.sin(perpendicularAngle);
+
+      const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      line.setAttribute("x1", String(x1));
+      line.setAttribute("y1", String(y1));
+      line.setAttribute("x2", String(x2));
+      line.setAttribute("y2", String(y2));
+      line.setAttribute("class", "st1");
+      parkingLinesGroup.appendChild(line);
+    }
+    
+    const lines = Array.from(parkingLinesGroup.children);
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -34,9 +65,9 @@ export default function AnimatedRoad() {
       { drawSVG: '100%', duration: 1, ease: 'none' },
       0
     ).fromTo(
-      parkingLines,
+      lines,
       { drawSVG: '0%' },
-      { drawSVG: '100%', duration: 1, ease: 'none' },
+      { drawSVG: '100%', duration: 0.8, stagger: 0.02, ease: 'none' },
       0
     );
 
@@ -105,14 +136,9 @@ export default function AnimatedRoad() {
         </defs>
         <style type="text/css">{`
             .st0{fill:none;stroke:#4a7ec2;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-            .st1{fill:none;stroke:hsl(var(--border));stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:15,45;}
+            .st1{fill:none;stroke:hsl(var(--chart-2));stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
         `}</style>
-        <path
-          id="parkingLines"
-          ref={parkingLinesRef}
-          className="st1"
-          d="M 289.052 140.282 C 284.58 163.258 181.638 974.649 450.733 1231.39 C 797.328 1562.06 1448.95 1194.48 1443.32 1857.45 C 1439.36 2324.44 58.761 2227.88 62.583 2752.4 C 65.887 3205.66 1448.09 3114.83 1443.22 3512.01 C 1434.53 4222.6 121.675 4076.55 120.718 4512.32 C 119.013 5285.71 1451.56 5070.93 1451.64 5443.08 C 1451.77 6055.59 259.258 6075.13 259.258 6075.13"
-        />
+        <g id="parkingLines" ref={parkingLinesGroupRef}></g>
         <path
           id="motionPath"
           ref={pathRef}
