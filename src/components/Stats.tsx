@@ -32,7 +32,7 @@ const Counter = ({ to }: { to: number }) => {
     requestAnimationFrame(animate);
   }, [to]);
 
-  return <span className="text-5xl font-bold font-headline text-primary">{count.toLocaleString('el-GR')}+</span>;
+  return <span className="text-6xl md:text-7xl font-bold font-headline text-primary">{count.toLocaleString('el-GR')}+</span>;
 };
 
 export default function Stats() {
@@ -64,13 +64,13 @@ export default function Stats() {
   }, []);
 
   return (
-    <section ref={statsRef} id="stats" className="py-16 md:py-24 bg-secondary">
+    <section ref={statsRef} id="stats" className="py-20 md:py-32 bg-secondary">
       <div className="container">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 md:gap-8 text-center">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col items-center">
               {isVisible && <Counter to={stat.value} />}
-              <p className="mt-2 text-lg text-muted-foreground font-semibold">{stat.label}</p>
+              <p className="mt-4 text-xl text-muted-foreground font-semibold">{stat.label}</p>
             </div>
           ))}
         </div>
