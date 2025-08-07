@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
@@ -59,10 +60,7 @@ export default function Header() {
           <SheetContent side="right" className="w-[300px] sm:w-[400px]">
             <SheetHeader className="p-4 border-b flex-row justify-between items-center">
                 <Link href="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
-                  <ParkingCircle className="h-6 w-6 text-primary" />
-                  <SheetTitle>
-                    <span className="font-bold text-lg font-headline">ParkProfit</span>
-                  </SheetTitle>
+                  <Image src={"/images/logo.png"} width={40} height={40} alt="ParkProfit Logo"/>
                 </Link>
               <SheetClose asChild>
                   <Button variant="ghost" size="icon">
