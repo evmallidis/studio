@@ -43,11 +43,14 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 max-w-screen-2xl items-center">
+      <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
         <Link href="/" className="flex items-center gap-2 mr-6">
           <Image src={"/images/logo.png"} width={40} height={40} alt="ParkProfit Logo"/>
         </Link>
-        <div className="flex flex-1 items-center justify-end">
+        
+        <div className="flex-grow" />
+
+        <div className="flex items-center">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
