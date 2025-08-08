@@ -46,7 +46,7 @@ export default function AnimatedBurgerIcon() {
         ref={topBarRef}
         d="M3 6H21"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -54,7 +54,7 @@ export default function AnimatedBurgerIcon() {
         ref={middleBarRef}
         d="M3 12H21"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
@@ -62,7 +62,7 @@ export default function AnimatedBurgerIcon() {
         ref={bottomBarRef}
         d="M3 18H21"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
