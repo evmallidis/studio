@@ -1,7 +1,15 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+'use client';
+import { Card, CardContent } from '@/components/ui/card';
 import { Handshake, Hammer, Wrench, ParkingCircle, Users } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
-import Image from 'next/image';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation, EffectCoverflow } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
 
 interface ServiceDetail {
   icon: LucideIcon;
@@ -58,21 +66,45 @@ export default function ServicesPage() {
             </div>
             
             <div className="space-y-8">
-                 <div className="text-left mb-8">
+                <div className="text-left mb-8">
                     <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Αναλαμβάνουμε</h2>
-                 </div>
-                 <div className="space-y-6">
+                </div>
+                <Swiper
+                    effect={'coverflow'}
+                    grabCursor={true}
+                    centeredSlides={true}
+                    slidesPerView={'auto'}
+                    coverflowEffect={{
+                        rotate: 50,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 1,
+                        slideShadows: true,
+                    }}
+                    autoplay={{
+                        delay: 3500,
+                        disableOnInteraction: false,
+                    }}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    navigation={true}
+                    modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+                    className="w-full"
+                >
                     {serviceDetails.map((service, index) => (
-                        <Card key={index} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <CardContent className="flex items-center gap-6 p-6">
-                            <div className="bg-primary/10 p-4 rounded-lg">
-                            <service.icon className="h-8 w-8 text-primary" />
-                            </div>
-                            <p className="text-base text-muted-foreground font-medium">{service.title}</p>
-                        </CardContent>
-                        </Card>
+                        <SwiperSlide key={index} className="!w-auto !md:w-[500px] !h-auto pb-12">
+                            <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
+                                <CardContent className="flex items-center gap-6 p-6">
+                                    <div className="bg-primary/10 p-4 rounded-lg">
+                                        <service.icon className="h-8 w-8 text-primary" />
+                                    </div>
+                                    <p className="text-base text-muted-foreground font-medium">{service.title}</p>
+                                </CardContent>
+                            </Card>
+                        </SwiperSlide>
                     ))}
-                 </div>
+                </Swiper>
             </div>
         </div>
       </div>
