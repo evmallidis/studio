@@ -70,11 +70,11 @@ export default function Faq() {
     <section id="faq" ref={sectionRef} className="w-full py-16 md:py-24 overflow-hidden">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-          <div className="md:order-2">
+          <div className="md:order-2 border bg-card text-card-foreground shadow-2xl rounded-lg p-8 md:p-8">
               <div className="text-left mb-8">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Συνήθεις Ερωτήσεις</h2>
               </div>
-              <Accordion type="single" collapsible className="w-full">
+              <Accordion type="single" collapsible className="w-full ">
               {faqData.map((item, index) => (
                   <AccordionItem key={index} value={`item-${index}`}>
                   <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline">
