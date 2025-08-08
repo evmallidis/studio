@@ -70,17 +70,20 @@ export default function Header() {
             </SheetHeader>
             <div className="flex flex-col h-full">
               <nav ref={navRef} className="flex flex-col items-center justify-center flex-1 gap-8">
-                  <Link href="#contact" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
-                      Επικοινωνία
-                  </Link>
-                  <Link href="#services" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                  <Link href="/services" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
                       Υπηρεσίες
                   </Link>
-                  <Link href="#roi-calculator" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                  <Link href="/#roi-calculator" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
                       Υπολογιστής ROI
                   </Link>
-                  <Link href="#testimonials" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                  <Link href="/#testimonials" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
                       Μαρτυρίες
+                  </Link>
+                  <Link href="/#faq" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                      FAQ
+                  </Link>
+                   <Link href="#contact" onClick={handleLinkClick} className="text-2xl font-semibold hover:text-primary transition-colors">
+                      Επικοινωνία
                   </Link>
               </nav>
             </div>
@@ -90,3 +93,4 @@ export default function Header() {
     </header>
   );
 }
+

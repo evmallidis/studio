@@ -68,7 +68,7 @@ export default function Faq() {
 
   return (
     <section id="faq" ref={sectionRef} className="w-full py-16 md:py-24 overflow-hidden">
-      <div className="container">
+      <div className="container mx-auto">
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           <div className="md:order-2">
               <div className="text-left mb-8">
