@@ -51,12 +51,33 @@ export default function AnimatedRoad() {
     const lines = Array.from(parkingLinesGroup.children);
     gsap.set(lines, { autoAlpha: 0 }); // Initially hide the lines
 
+    const motionPathTween = gsap.to(
+      car,
+      {
+        motionPath: {
+          path: path,
+          align: path,
+          alignOrigin: [0.5, 0.5],
+          autoRotate: 90,
+        },
+        duration: 1,
+        ease: 'none',
+      }
+    )
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: document.body,
         start: 'top top',
         end: 'bottom bottom',
         scrub: 1.5,
+        onUpdate: (self) => {
+            const newRotate = self.direction === -1 ? -90 : 90;
+            if (motionPathTween.vars.motionPath.autoRotate !== newRotate) {
+                motionPathTween.vars.motionPath.autoRotate = newRotate;
+                motionPathTween.invalidate();
+            }
+        },
       },
     });
 
@@ -72,26 +93,17 @@ export default function AnimatedRoad() {
       {
         autoAlpha: 1,
         duration: 0.1, 
-        stagger: 1 / lines.length, // Distribute the fade-in over the entire duration
+        stagger: {
+          each: 1 / lines.length, 
+          from: "start"
+        },
         ease: 'none',
       },
       0
     );
 
-    tl.to(
-      car,
-      {
-        motionPath: {
-          path: path,
-          align: path,
-          alignOrigin: [0.5, 0.5],
-          autoRotate: 90,
-        },
-        duration: 1,
-        ease: 'none',
-      },
-      0
-    );
+    tl.add(motionPathTween, 0);
+
   }, []);
 
   return (
