@@ -1,9 +1,16 @@
+'use client';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from "@/components/ui/accordion";
+import Image from "next/image";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "@/lib/gsap";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const faqData = [
     {
@@ -26,24 +33,69 @@ const faqData = [
   
 
 export default function Faq() {
+  const imageRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const image = imageRef.current;
+    if (!image) return;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top center",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    tl.fromTo(
+      image,
+      { y: -20, autoAlpha: 0, scale: 0.95 },
+      { y: 0, autoAlpha: 1, scale: 1, duration: 0.8, ease: "power2.out" }
+    ).to(
+      image,
+      {
+        y: 20,
+        duration: 4,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      },
+      "-=0.5"
+    );
+
+  }, []);
+
   return (
-    <section id="faq" className="w-full py-16 md:py-24">
-      <div className="container max-w-4xl">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Συνήθεις Ερωτήσεις</h2>
+    <section id="faq" ref={sectionRef} className="w-full py-16 md:py-24 overflow-hidden">
+      <div className="container grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className="md:order-2">
+            <div className="text-left mb-8">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Συνήθεις Ερωτήσεις</h2>
+            </div>
+            <Accordion type="single" collapsible className="w-full">
+            {faqData.map((item, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline">
+                    {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-base text-muted-foreground pt-2">
+                    {item.answer}
+                </AccordionContent>
+                </AccordionItem>
+            ))}
+            </Accordion>
         </div>
-        <Accordion type="single" collapsible className="w-full">
-          {faqData.map((item, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline">
-                {item.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-base text-muted-foreground pt-2">
-                {item.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+        <div ref={imageRef} className="md:order-1 opacity-0">
+          <Image
+            src="https://placehold.co/600x600.png"
+            alt="Parking illustration"
+            width={600}
+            height={600}
+            className="rounded-lg shadow-2xl object-cover"
+            data-ai-hint="parking garage"
+          />
+        </div>
       </div>
     </section>
   )
