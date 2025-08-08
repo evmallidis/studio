@@ -115,7 +115,7 @@ export default function AnimatedRoad() {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1509.71 6152.4"
         preserveAspectRatio="xMidYMax meet"
-        className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-auto"
+        className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-full md:w-auto"
       >
         <defs>
               <radialGradient id="path184_1_" cx="669.6125" cy="537.1904" r="548.8004"
