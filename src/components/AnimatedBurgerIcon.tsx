@@ -44,7 +44,7 @@ export default function AnimatedBurgerIcon() {
     >
       <path
         ref={topBarRef}
-        d="M3 6H21"
+        d="M5 6H19"
         stroke="currentColor"
         strokeWidth="2.5"
         strokeLinecap="round"
@@ -52,7 +52,7 @@ export default function AnimatedBurgerIcon() {
       />
       <path
         ref={middleBarRef}
-        d="M3 12H21"
+        d="M5 12H19"
         stroke="currentColor"
         strokeWidth="2.5"
         strokeLinecap="round"
@@ -60,7 +60,7 @@ export default function AnimatedBurgerIcon() {
       />
       <path
         ref={bottomBarRef}
-        d="M3 18H21"
+        d="M5 18H19"
         stroke="currentColor"
         strokeWidth="2.5"
         strokeLinecap="round"
