@@ -12,7 +12,6 @@ export default function AnimatedBurgerIcon() {
 
   useEffect(() => {
     if (topBarRef.current && middleBarRef.current && bottomBarRef.current) {
-      console.log("dfwdfwef")
       gsap.set([topBarRef.current, middleBarRef.current, bottomBarRef.current], {
         transformOrigin: '50% 50%',
       });

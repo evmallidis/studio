@@ -46,7 +46,7 @@ export default function Hero() {
       "id": 3,
       "title": "Ολοκληρωμένες Λύσεις Στάθμευσης",
       "tagline": "Από τη μελέτη και τον σχεδιασμό μέχρι την πλήρη διαχείριση, προσφέρουμε λύσεις προσαρμοσμένες στις ανάγκες σας.",
-      "image": "https://placehold.co/1920x1080.png",
+      "image": "/images/service-d1-1.jpg",
       "imageHint": "parking solutions"
     }
   ];

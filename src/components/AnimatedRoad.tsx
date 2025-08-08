@@ -108,15 +108,14 @@ export default function AnimatedRoad() {
 
   return (
     <div ref={containerRef} className="absolute top-0 left-0 w-full h-full z-[-1] pointer-events-none overflow-hidden">
-      <svg
+       <svg
         ref={svgRef}
         id="linesvg"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 -77.327 1509.71 6300"
+        viewBox="0 0 1509.71 6152.4"
         preserveAspectRatio="xMidYMax meet"
-        className="absolute top-0 left-1/2 -translate-x-1/2 h-full"
-        style={{ width: '100%', maxWidth: '1509.71px' }}
+        className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-auto"
       >
         <defs>
               <radialGradient id="path184_1_" cx="669.6125" cy="537.1904" r="548.8004"

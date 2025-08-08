@@ -77,7 +77,7 @@ export default function ServicesPage() {
                   pagination={{
                       clickable: true,
                   }}
-                  navigation={true}
+                  navigation={false}
                   modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
                   className="w-full max-w-6xl mx-auto"
               >
