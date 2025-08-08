@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -27,7 +27,7 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-export default function QuoteForm() {
+function QuoteFormComponent() {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -214,4 +214,20 @@ export default function QuoteForm() {
       </div>
     </section>
   );
+}
+
+export default function QuoteForm() {
+    const recaptchaKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    if (!recaptchaKey) {
+        return (
+            <div className="container text-center py-8">
+                <p className="text-destructive">Το κλειδί reCAPTCHA δεν έχει ρυθμιστεί. Η φόρμα είναι απενεργοποιημένη.</p>
+            </div>
+        );
+    }
+    return (
+        <GoogleReCaptchaProvider reCaptchaKey={recaptchaKey}>
+            <QuoteFormComponent />
+        </GoogleReCaptchaProvider>
+    );
 }

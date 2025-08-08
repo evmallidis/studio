@@ -4,7 +4,7 @@ import { useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
+import { GoogleReCaptchaProvider, useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useToast } from '@/hooks/use-toast';
 import type { RoiEstimationOutput } from '@/ai/flows/roi-estimation';
 import { getRoiEstimation } from '@/lib/actions';
@@ -27,7 +27,7 @@ const formSchema = z.object({
 
 type FormData = z.infer<typeof formSchema>;
 
-export default function RoiCalculator() {
+function RoiCalculatorComponent() {
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<RoiEstimationOutput | null>(null);
   const { toast } = useToast();
@@ -82,7 +82,7 @@ export default function RoiCalculator() {
   );
 
   return (
-    <section id="roi-calculator" className="p-16 md:p-24">
+    <section id="roi-calculator" className="py-16 md:py-24">
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div>
@@ -220,4 +220,20 @@ export default function RoiCalculator() {
       </div>
     </section>
   );
+}
+
+export default function RoiCalculator() {
+    const recaptchaKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    if (!recaptchaKey) {
+        return (
+            <div className="container text-center py-8">
+                <p className="text-destructive">Το κλειδί reCAPTCHA δεν έχει ρυθμιστεί. Ο υπολογιστής ROI είναι απενεργοποιημένος.</p>
+            </div>
+        );
+    }
+    return (
+        <GoogleReCaptchaProvider reCaptchaKey={recaptchaKey}>
+            <RoiCalculatorComponent />
+        </GoogleReCaptchaProvider>
+    );
 }
