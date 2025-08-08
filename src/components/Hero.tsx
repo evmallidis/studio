@@ -1,4 +1,5 @@
 "use client";
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,7 +11,11 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import 'swiper/css/effect-fade';
 
-// Our custom button component
+import Lightbox from "yet-another-react-lightbox";
+import Video from "yet-another-react-lightbox/plugins/video";
+import "yet-another-react-lightbox/styles.css";
+import { PlayCircle } from 'lucide-react';
+
 interface Slide {
   id: number;
   title: string;
@@ -19,6 +24,7 @@ interface Slide {
 }
 
 export default function Hero() {
+  const [open, setOpen] = useState(false);
 
   const data: Slide[] = [
     {
@@ -78,6 +84,10 @@ export default function Hero() {
                      <Button asChild size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm border-white/50 hover:bg-white/20 text-white py-7 px-8 text-lg">
                       <Link href="#contact">Επικοινωνήστε Μαζί Μας</Link>
                     </Button>
+                    <Button onClick={() => setOpen(true)} size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm border-white/50 hover:bg-white/20 text-white py-7 px-8 text-lg">
+                      <PlayCircle className="mr-2 h-6 w-6" />
+                      Δείτε το Video
+                    </Button>
                   </div>
                 </div>
               </div>
@@ -85,6 +95,22 @@ export default function Hero() {
           ))}
         </Swiper>
       </div>
+       <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        plugins={[Video]}
+        slides={[
+            {
+                type: "video",
+                sources: [
+                {
+                    src: "https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4",
+                    type: "video/mp4",
+                },
+                ],
+            },
+        ]}
+      />
     </section>
   );
 }
