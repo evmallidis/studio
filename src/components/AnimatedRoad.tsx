@@ -69,7 +69,12 @@ export default function AnimatedRoad() {
 
     tl.to(
       lines,
-      { autoAlpha: 1, duration: 1, ease: 'none' },
+      {
+        autoAlpha: 1,
+        duration: 0.1, 
+        stagger: 1 / lines.length, // Distribute the fade-in over the entire duration
+        ease: 'none',
+      },
       0
     );
 
