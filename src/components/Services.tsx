@@ -35,7 +35,7 @@ export default function Services() {
   return (
     <section id="services" className="py-16 md:py-24">
       <div className="container">
-        <div className="text-center mb-12">
+        <div className="relative text-center mb-12 z-10">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Οι Λύσεις Στάθμευσης Μας</h2>
           <p className="max-w-2xl mx-auto mt-4 text-muted-foreground md:text-lg">
             Αναλαμβάνουμε τα πάντα, μετατρέποντας οποιονδήποτε χώρο σε μια επαγγελματική εγκατάσταση στάθμευσης.
