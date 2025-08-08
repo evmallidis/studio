@@ -49,6 +49,7 @@ export default function AnimatedRoad() {
     }
     
     const lines = Array.from(parkingLinesGroup.children);
+    gsap.set(lines, { autoAlpha: 0 }); // Initially hide the lines
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -60,9 +61,15 @@ export default function AnimatedRoad() {
     });
 
     tl.fromTo(
-      [path, lines],
+      path,
       { drawSVG: '0%' },
       { drawSVG: '100%', duration: 1, ease: 'none' },
+      0
+    );
+
+    tl.to(
+      lines,
+      { autoAlpha: 1, duration: 1, ease: 'none' },
       0
     );
 
@@ -131,7 +138,7 @@ export default function AnimatedRoad() {
         </defs>
         <style type="text/css">{`
             .st0{fill:none;stroke:#4a7ec2;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
-            .st1{fill:none;stroke:hsl(var(--chart-2));stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+            .st1{fill:none;stroke:hsl(var(--accent));stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
         `}</style>
         <g id="parkingLines" ref={parkingLinesGroupRef}></g>
         <path
