@@ -107,7 +107,7 @@ export default function AnimatedRoad() {
   }, []);
 
   return (
-    <div ref={containerRef} className="absolute top-0 left-0 w-full h-full z-[-1] pointer-events-none overflow-hidden">
+    <div ref={containerRef} className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
        <svg
         ref={svgRef}
         id="linesvg"

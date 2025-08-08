@@ -12,19 +12,21 @@ import Faq from '@/components/Faq';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen relative">
-      <AnimatedRoad />
-      <Header />
-      <main className="flex min-h-screen flex-col items-center justify-between">
-        <Hero />
-        <Services />
-        <RoiCalculator />
-        <Testimonials />
-        <Faq />
-        <Stats />
-        <QuoteForm />
-      </main>
-      <Footer />
+    <div className="relative overflow-x-hidden">
+        <div className="flex flex-col min-h-screen">
+          <AnimatedRoad />
+          <Header />
+          <main className="flex-grow flex flex-col items-center justify-between relative z-10">
+            <Hero />
+            <Services />
+            <RoiCalculator />
+            <Testimonials />
+            <Faq />
+            <Stats />
+            <QuoteForm />
+          </main>
+          <Footer />
+        </div>
     </div>
   );
 }
