@@ -69,7 +69,7 @@ export default function AnimatedRoad() {
       scrollTrigger: {
         trigger: document.body,
         start: 'top top',
-        end: 'bottom bottom',
+        end: () => "+=" + document.body.scrollHeight,
         scrub: 1.5,
         onUpdate: (self) => {
             const newRotate = self.direction === -1 ? -90 : 90;
