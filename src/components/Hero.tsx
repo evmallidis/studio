@@ -100,10 +100,16 @@ export default function Hero() {
         close={() => setOpen(false)}
         plugins={[Video]}
         slides={[
+          {
+            type: "video",
+            autoPlay: true,
+            sources: [
             {
-                type: "youtube",
-                videoId: "SN0cezeVgTo",
+                src: "/videos/Parking Management (720p).mp4",
+                type: "video/mp4"
             },
+            ],
+        },
         ]}
       />
     </section>
