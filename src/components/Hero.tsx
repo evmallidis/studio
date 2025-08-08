@@ -21,6 +21,7 @@ interface Slide {
   title: string;
   tagline: string;
   image: string;
+  imageHint?: string;
 }
 
 export default function Hero() {
@@ -32,12 +33,21 @@ export default function Hero() {
       "title": "Μετατρέψτε τον Αχρησιμοποίητο Χώρο σας σε Κέρδος",
       "tagline": "Αξιοποιούμε τον χώρο σας και τον μετατρέπουμε σε μια κερδοφόρα επιχείρηση στάθμευσης. Γίνετε ο συνεργάτης μας για τη δημιουργία σύγχρονων και αποδοτικών εγκαταστάσεων.",
       "image": "/images/row-img-04.jpg",
+      "imageHint": "parking lot"
     },
     {
       "id": 2,
       "title": "Έξυπνη Διαχείριση, Μεγαλύτερα Κέρδη",
       "tagline": "Αναβαθμίστε τον υπάρχοντα χώρο στάθμευσής σας με τεχνολογία αιχμής και επαγγελματική διαχείριση. Αυξήστε τα έσοδα και την ικανοποίηση των πελατών σας μαζί μας.",
       "image": "/images/sidebar-img-01.jpg",
+      "imageHint": "modern garage"
+    },
+    {
+      "id": 3,
+      "title": "Ολοκληρωμένες Λύσεις Στάθμευσης",
+      "tagline": "Από τη μελέτη και τον σχεδιασμό μέχρι την πλήρη διαχείριση, προσφέρουμε λύσεις προσαρμοσμένες στις ανάγκες σας.",
+      "image": "https://placehold.co/1920x1080.png",
+      "imageHint": "parking solutions"
     }
   ];
   
@@ -58,14 +68,17 @@ export default function Hero() {
           modules={[Autoplay, Navigation, Pagination, EffectFade]}
           className="h-full"
         >
-          {data.map(({ id, image, tagline, title }) => (
+          {data.map(({ id, image, tagline, title, imageHint }) => (
             <SwiperSlide key={id}>
-              <div
-                className="h-full w-full absolute inset-0"
-                style={{
-                  background: `url(${image}) center center / cover scroll no-repeat`,
-                }}
-              ></div>
+               <div className="h-full w-full absolute inset-0">
+                  <Image 
+                      src={image} 
+                      alt={title}
+                      fill
+                      style={{ objectFit: 'cover', objectPosition: 'center' }}
+                      {...(imageHint && { "data-ai-hint": imageHint })}
+                  />
+               </div>
               <div className="h-full w-full absolute inset-0 bg-black/40"></div>
               <div className="relative z-10 h-full flex items-center justify-center text-white">
                 <div className="text-center container max-w-4xl px-4">
