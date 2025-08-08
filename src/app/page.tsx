@@ -12,7 +12,7 @@ import Faq from '@/components/Faq';
 
 export default function Home() {
   return (
-    <div className="relative overflow-x-hidden">
+    <div className="relative">
         <div className="flex flex-col min-h-screen">
           <AnimatedRoad />
           <Header />

@@ -95,6 +95,6 @@
 
 @layer components {
   .container {
-    @apply w-full max-w-full px-4 sm:px-6 lg:px-8;
+    @apply w-full px-4 sm:px-6 lg:px-8;
   }
 }
