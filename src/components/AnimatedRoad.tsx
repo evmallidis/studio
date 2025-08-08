@@ -114,7 +114,7 @@ export default function AnimatedRoad() {
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 1509.71 6152.4"
-        preserveAspectRatio="xMidYMax meet"
+        preserveAspectRatio="xMidYMin meet"
         className="absolute top-0 left-1/2 -translate-x-1/2 h-full w-full md:w-auto"
       >
         <defs>
