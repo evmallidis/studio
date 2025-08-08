@@ -63,7 +63,7 @@ export default function Header() {
                 </Link>
                 <SheetClose asChild>
                     <Button variant="ghost" size="icon">
-                      <X className="h-6 w-6" />
+                      <X className="h-6 w-6" style={{scale: "1.8"}}/>
                       <span className="sr-only">Κλείσιμο</span>
                     </Button>
                 </SheetClose>

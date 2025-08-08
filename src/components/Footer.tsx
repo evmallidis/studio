@@ -28,7 +28,7 @@ export default function Footer() {
               Αποκλειστική συνεργασία με το 
               <Link href="https://ipark.gr/" className="flex items-center gap-2 mb-4">
             
-              <Image src={"/images/LOGO4.png"} alt={"Cloud parking management. ipark.gr"} width={100} height={100} alt="ParkProfit Logo"/>
+              <Image src={"/images/LOGO4.png"} alt={"Cloud parking management. ipark.gr"} width={100} height={100} />
             </Link>
             </p>
           </div>
@@ -70,7 +70,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-border/20 mt-12 pt-8 text-center text-sm text-muted-foreground/60">
-          <p>&copy; {year} UPIO. Με επιφύλαξη παντός δικαιώματος.</p>
+          <p>&copy; {year} <Link href="https://upio.gr" className="hover:underline text-muted-foreground">UPIO</Link>. Με επιφύλαξη παντός δικαιώματος.</p>
         </div>
       </div>
     </footer>

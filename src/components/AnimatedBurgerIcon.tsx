@@ -35,16 +35,17 @@ export default function AnimatedBurgerIcon() {
   return (
     <svg
       ref={svgRef}
-      width="64"
-      height="64"
-      viewBox="0 0 24 24"
+      style={{scale: "1.8"}}
+      width="100"
+      height="100"
+      viewBox="0 0 20 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className="text-foreground"
     >
       <path
         ref={topBarRef}
-        d="M5 6H19"
+        d="M1 6H18"
         stroke="currentColor"
         strokeWidth="2.5"
         strokeLinecap="round"
@@ -52,7 +53,7 @@ export default function AnimatedBurgerIcon() {
       />
       <path
         ref={middleBarRef}
-        d="M5 12H19"
+        d="M3 12H18"
         stroke="currentColor"
         strokeWidth="2.5"
         strokeLinecap="round"
@@ -60,7 +61,7 @@ export default function AnimatedBurgerIcon() {
       />
       <path
         ref={bottomBarRef}
-        d="M5 18H19"
+        d="M1 18H18"
         stroke="currentColor"
         strokeWidth="2.5"
         strokeLinecap="round"

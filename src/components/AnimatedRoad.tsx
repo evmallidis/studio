@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { gsap, DrawSVGPlugin, MotionPathPlugin, ScrollTrigger } from '@/lib/gsap';
-
+import { DrawSVGPlugin, MotionPathPlugin, ScrollTrigger } from '@/lib/gsap';
+import { gsap } from "gsap";
 gsap.registerPlugin(DrawSVGPlugin, MotionPathPlugin, ScrollTrigger);
 
 export default function AnimatedRoad() {
