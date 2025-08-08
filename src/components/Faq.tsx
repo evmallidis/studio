@@ -68,33 +68,35 @@ export default function Faq() {
 
   return (
     <section id="faq" ref={sectionRef} className="w-full py-16 md:py-24 overflow-hidden">
-      <div className="container grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-        <div className="md:order-2">
-            <div className="text-left mb-8">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Συνήθεις Ερωτήσεις</h2>
-            </div>
-            <Accordion type="single" collapsible className="w-full">
-            {faqData.map((item, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline">
-                    {item.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-base text-muted-foreground pt-2">
-                    {item.answer}
-                </AccordionContent>
-                </AccordionItem>
-            ))}
-            </Accordion>
-        </div>
-        <div ref={imageRef} className="md:order-1 opacity-0">
-          <Image
-            src="https://placehold.co/600x600.png"
-            alt="Parking illustration"
-            width={600}
-            height={600}
-            className="rounded-lg shadow-2xl object-cover"
-            data-ai-hint="parking garage"
-          />
+      <div className="container">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div className="md:order-2">
+              <div className="text-left mb-8">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Συνήθεις Ερωτήσεις</h2>
+              </div>
+              <Accordion type="single" collapsible className="w-full">
+              {faqData.map((item, index) => (
+                  <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-left font-semibold text-lg hover:no-underline">
+                      {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-base text-muted-foreground pt-2">
+                      {item.answer}
+                  </AccordionContent>
+                  </AccordionItem>
+              ))}
+              </Accordion>
+          </div>
+          <div ref={imageRef} className="md:order-1 opacity-0">
+            <Image
+              src="/images/col-right-01.jpg"
+              alt="Parking illustration"
+              width={600}
+              height={600}
+              className="rounded-lg shadow-2xl object-cover"
+              data-ai-hint="parking garage"
+            />
+          </div>
         </div>
       </div>
     </section>
