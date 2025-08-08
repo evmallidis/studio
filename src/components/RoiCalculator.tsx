@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useToast } from '@/hooks/use-toast';
 import type { RoiEstimationOutput } from '@/ai/flows/roi-estimation';
 import { getRoiEstimation } from '@/lib/actions';
@@ -30,6 +31,7 @@ export default function RoiCalculator() {
   const [isLoading, setIsLoading] = useState(false);
   const [result, setResult] = useState<RoiEstimationOutput | null>(null);
   const { toast } = useToast();
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -38,24 +40,46 @@ export default function RoiCalculator() {
     },
   });
 
-  async function onSubmit(values: FormData) {
-    setIsLoading(true);
-    setResult(null);
+  const onSubmit = useCallback(
+    async (values: FormData) => {
+      setIsLoading(true);
+      setResult(null);
 
-    const response = await getRoiEstimation(values);
+      if (!executeRecaptcha) {
+        toast({
+          variant: 'destructive',
+          title: 'Σφάλμα',
+          description: 'Το reCAPTCHA δεν είναι έτοιμο. Παρακαλώ δοκιμάστε ξανά.',
+        });
+        setIsLoading(false);
+        return;
+      }
 
-    setIsLoading(false);
+      try {
+        const token = await executeRecaptcha('roiEstimationSubmit');
+        const response = await getRoiEstimation({ ...values, recaptchaToken: token });
 
-    if (response.success && response.data) {
-      setResult(response.data);
-    } else {
-      toast({
-        variant: 'destructive',
-        title: 'Σφάλμα',
-        description: response.error || 'Η εκτίμηση ROI απέτυχε. Παρακαλώ δοκιμάστε ξανά.',
-      });
-    }
-  }
+        if (response.success && response.data) {
+          setResult(response.data);
+        } else {
+          toast({
+            variant: 'destructive',
+            title: 'Σφάλμα',
+            description: response.error || 'Η εκτίμηση ROI απέτυχε. Παρακαλώ δοκιμάστε ξανά.',
+          });
+        }
+      } catch (error) {
+        toast({
+          variant: 'destructive',
+          title: 'Σφάλμα',
+          description: 'Παρουσιάστηκε ένα σφάλμα. Παρακαλώ δοκιμάστε ξανά.',
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [executeRecaptcha, toast]
+  );
 
   return (
     <section id="roi-calculator" className="p-16 md:p-24">

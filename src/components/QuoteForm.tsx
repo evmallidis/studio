@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
@@ -12,6 +13,7 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { Loader2, Send } from 'lucide-react';
+import { submitQuoteForm } from '@/lib/actions';
 
 const formSchema = z.object({
   municipality: z.string().min(1, 'Ο Δήμος είναι υποχρεωτικός.'),
@@ -28,6 +30,7 @@ type FormData = z.infer<typeof formSchema>;
 export default function QuoteForm() {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const { executeRecaptcha } = useGoogleReCaptcha();
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
@@ -41,20 +44,48 @@ export default function QuoteForm() {
     },
   });
 
-  async function onSubmit(values: FormData) {
-    setIsLoading(true);
-    // Here you would typically send the form data to your backend
-    console.log(values);
+  const onSubmit = useCallback(
+    async (values: FormData) => {
+      setIsLoading(true);
+      if (!executeRecaptcha) {
+        toast({
+          variant: 'destructive',
+          title: 'Σφάλμα',
+          description: 'Το reCAPTCHA δεν είναι έτοιμο. Παρακαλώ δοκιμάστε ξανά.',
+        });
+        setIsLoading(false);
+        return;
+      }
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setIsLoading(false);
-    toast({
-      title: 'Η Φόρμα Υποβλήθηκε!',
-      description: 'Σας ευχαριστούμε για το ενδιαφέρον σας. Θα επικοινωνήσουμε μαζί σας σύντομα.',
-    });
-    form.reset();
-  }
+      try {
+        const token = await executeRecaptcha('quoteFormSubmit');
+        const response = await submitQuoteForm({ ...values, recaptchaToken: token });
+
+        if (response.success) {
+          toast({
+            title: 'Η Φόρμα Υποβλήθηκε!',
+            description: response.message,
+          });
+          form.reset();
+        } else {
+          toast({
+            variant: 'destructive',
+            title: 'Σφάλμα Υποβολής',
+            description: response.message,
+          });
+        }
+      } catch (error) {
+        toast({
+          variant: 'destructive',
+          title: 'Σφάλμα',
+          description: 'Παρουσιάστηκε ένα σφάλμα. Παρακαλώ δοκιμάστε ξανά.',
+        });
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [executeRecaptcha, toast, form]
+  );
 
   return (
     <section id="quote-form" className="py-16 md:py-24">
