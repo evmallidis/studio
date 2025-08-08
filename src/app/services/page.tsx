@@ -56,7 +56,7 @@ export default function ServicesPage() {
           <div className="py-16 md:py-12">
             <div className="container px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline">Αναλαμβάνουμε</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-headline text-primary">Αναλαμβάνουμε</h2>
               </div>
               <Swiper
                   effect={'coverflow'}
