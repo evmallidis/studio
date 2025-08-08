@@ -27,7 +27,7 @@ const serviceDetails: ServiceDetail[] = [
     },
     {
       icon: Wrench,
-      title: 'Την Οργάνωση του χώρου ώστε να αποτελέσει έναν ελκυστικό και ασφαλή χώρο Στάθμεyσης.',
+      title: 'Την Οργάνωση του χώρου ώστε να αποτελέσει έναν ελκυστικό και ασφαλή χώρο Στάθμευσης.',
     },
     {
       icon: ParkingCircle,
@@ -42,7 +42,7 @@ const serviceDetails: ServiceDetail[] = [
 export default function ServicesPage() {
   return (
     <div className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto">
+      <div className="container px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl font-headline text-primary">
             Τι σας προσφέρει η Parking Management
@@ -93,8 +93,8 @@ export default function ServicesPage() {
                     className="w-full"
                 >
                     {serviceDetails.map((service, index) => (
-                        <SwiperSlide key={index} className="!w-auto !md:w-[500px] !h-auto pb-12">
-                            <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
+                        <SwiperSlide key={index} className="!w-full !max-w-[500px] !h-auto pb-12">
+                            <Card className="shadow-lg hover:shadow-xl transition-shadow duration-300 h-full min-h-[150px] flex">
                                 <CardContent className="flex items-center gap-6 p-6">
                                     <div className="bg-primary/10 p-4 rounded-lg">
                                         <service.icon className="h-8 w-8 text-primary" />
